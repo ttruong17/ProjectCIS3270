@@ -2,39 +2,34 @@ package project;
 
 public class Customers {
 
-	class Customer{
-	
-		//declare variables
+	class Customer {
+
+		// declare variables
 		String firstName;
 		String lastName;
-		String middleName; 
-		long streetNum; 
+		char middleName;
+		long streetNum;
 		String streetName;
 		String city;
 		String state;
 		long zipCode;
-		
+
 		// create a non-arg constructor
-		Customer(){
-			
+		Customer() {
+
 		}
-		
-		//create a constructor with args
-		Customer(String newFirstName,
-		String newLastName,
-		String newMiddleName,
-		long newStreetNum, 
-		String newStreetName,
-		String newCity,
-		String newState,
-		long newZipCode){
-			
-			 firstName = newFirstName;
+
+		// create a constructor with args
+		Customer(String newFirstName, String newLastName, char newMiddleName,
+				long newStreetNum, String newStreetName, String newCity,
+				String newState, long newZipCode) {
+
+			firstName = newFirstName;
 			lastName = newLastName;
-			middleName = newMiddleName; 
-			streetNum = newStreetNum; 
-			streetName= newStreetName;
-			 city = newCity;
+			middleName = newMiddleName;
+			streetNum = newStreetNum;
+			streetName = newStreetName;
+			city = newCity;
 			state = newState;
 			zipCode = newZipCode;
 		}
@@ -47,7 +42,8 @@ public class Customers {
 		}
 
 		/**
-		 * @param firstName the firstName to set
+		 * @param firstName
+		 *            the firstName to set
 		 */
 		public void setFirstName(String firstName) {
 			this.firstName = firstName;
@@ -61,7 +57,8 @@ public class Customers {
 		}
 
 		/**
-		 * @param lastName the lastName to set
+		 * @param lastName
+		 *            the lastName to set
 		 */
 		public void setLastName(String lastName) {
 			this.lastName = lastName;
@@ -70,14 +67,15 @@ public class Customers {
 		/**
 		 * @return the middleName
 		 */
-		public String getMiddleName() {
+		public char getMiddleName() {
 			return middleName;
 		}
 
 		/**
-		 * @param middleName the middleName to set
+		 * @param middleName
+		 *            the middleName to set
 		 */
-		public void setMiddleName(String middleName) {
+		public void setMiddleName(char middleName) {
 			this.middleName = middleName;
 		}
 
@@ -89,7 +87,8 @@ public class Customers {
 		}
 
 		/**
-		 * @param streetNum the streetNum to set
+		 * @param streetNum
+		 *            the streetNum to set
 		 */
 		public void setStreetNum(long streetNum) {
 			this.streetNum = streetNum;
@@ -103,7 +102,8 @@ public class Customers {
 		}
 
 		/**
-		 * @param streetName the streetName to set
+		 * @param streetName
+		 *            the streetName to set
 		 */
 		public void setStreetName(String streetName) {
 			this.streetName = streetName;
@@ -117,7 +117,8 @@ public class Customers {
 		}
 
 		/**
-		 * @param city the city to set
+		 * @param city
+		 *            the city to set
 		 */
 		public void setCity(String city) {
 			this.city = city;
@@ -131,7 +132,8 @@ public class Customers {
 		}
 
 		/**
-		 * @param state the state to set
+		 * @param state
+		 *            the state to set
 		 */
 		public void setState(String state) {
 			this.state = state;
@@ -145,12 +147,12 @@ public class Customers {
 		}
 
 		/**
-		 * @param zipCode the zipCode to set
+		 * @param zipCode
+		 *            the zipCode to set
 		 */
 		public void setZipCode(long zipCode) {
 			this.zipCode = zipCode;
 		}
-		
-		
+
 	}
 }
