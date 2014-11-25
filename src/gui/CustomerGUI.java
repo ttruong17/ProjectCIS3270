@@ -7,8 +7,10 @@ import project.Customers;
 public class CustomerGUI extends JFrame {
 	
 	private static final long serialVersionUID = 100001L;
-
-	private static  void CustomerGUI() {
+	JPanel panel = new JPanel();
+	JFrame frame = new JFrame(); // Create a frame
+	
+	public  CustomerGUI() {
 		 // Create a text field with text "Type Name Here"
 	    JTextField jtfNameFirst = new JTextField("First Name");
 	    JTextField jtfNameLast = new JTextField("Last Name");
@@ -20,17 +22,15 @@ public class CustomerGUI extends JFrame {
 	    JTextField jtfZIPcode = new JTextField("ZIP Code");
 
 
-		JPanel panel = new JPanel();
 		
-		JFrame frame = new JFrame(); // Create a frame
 	    frame.add(panel); // Add the panel to the frame
-	    frame.setTitle("Show GUI Components");
+	    frame.setTitle("New Customer");
 	    frame.setSize(250, 400);
 	    frame.setLocation(200, 100);
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setVisible(true);
 	    
-	    // Create a button with text OK 
+	    // Create a button with text Submit 
     JButton jbtSubmit = new JButton("Submit"); 
     jbtSubmit.addActionListener(null);
 
@@ -83,7 +83,7 @@ public static void main (String [] args){
 	
 	javax.swing.SwingUtilities.invokeLater(new Runnable() {
 		public void run() {
-			CustomerGUI();
+			new CustomerGUI();
 		}
 	});
 }

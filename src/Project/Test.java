@@ -1,5 +1,7 @@
 package project;
 
+import gui.CustomerGUI;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import project.Customers;
@@ -7,12 +9,26 @@ import project.Customers;
 public class Test {
 
 	public static void main(String[] args) {
-		 customer();
+		 
  Customers customer1 = new Customers();		
+
+CustomerGUI customer10 = new CustomerGUI();
 
 	}
 	
-	public static void customer (){
+	/**private static void customer1(Customers customer1) {
+		String firstName;
+		String lastName;
+		char middleName;
+		long streetNum;
+		String streetName;
+		String city;
+		String state;
+		long zipCode;
+	}
+	*/
+
+	/**public static void customer (){
 		Scanner in = new Scanner(System.in);
 		try {
 			System.out.println("first name");
@@ -41,5 +57,6 @@ public class Test {
 			System.out.println("An error Occured " + ex.getMessage());
 		}
 		in.close();
-	}
+		*/
+	//}
 	}
