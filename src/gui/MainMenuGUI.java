@@ -26,7 +26,7 @@ public class MainMenuGUI {
 		// adds the ability to have more than one panel in the main panel
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
-		// adds the panels to the main panel
+		// adds the panels to the main frame
 		frame1.add(mainPanel);
 		mainPanel.add(panel);
 		mainPanel.add(panel1);

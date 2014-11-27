@@ -10,7 +10,7 @@ public class CustomerGUI extends JFrame {
 
 	private static final long serialVersionUID = 100001L;
 	JPanel panel = new JPanel();
-	JFrame mainFrame = new JFrame();
+	//JFrame mainFrame = new JFrame();
 	JFrame frame = new JFrame(); // Create a frame
 
 	public CustomerGUI() {
@@ -26,8 +26,8 @@ public class CustomerGUI extends JFrame {
 		
 		frame.add(panel); // Add the panel to the frame
 
-		// Create a button with text Submit
-		JButton jbtSubmit = new JButton("Submit");
+		// Create a button with text continue
+		JButton jbtSubmit = new JButton("Continue");
 		jbtSubmit.addActionListener(null);
 
 		// Create a button with text Cancel
