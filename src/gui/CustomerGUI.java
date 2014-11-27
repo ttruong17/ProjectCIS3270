@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -28,7 +30,16 @@ public class CustomerGUI extends JFrame {
 
 		// Create a button with text continue
 		JButton jbtSubmit = new JButton("Continue");
-		jbtSubmit.addActionListener(null);
+		jbtSubmit.addActionListener(new ActionListener(){
+			public void actionPerformed (ActionEvent ae){
+				try{
+					CustomerUserGUI.main(new String[0]);
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
 
 		// Create a button with text Cancel
 		JButton jbtCancel = new JButton("Cancel");
@@ -45,7 +56,7 @@ public class CustomerGUI extends JFrame {
 		JLabel jlblZIP = new JLabel("ZIP Code: ");
 
 		// Create a text field with text "Type Name Here"
-		JTextField jtfNameFirst = new JTextField(" Enter First Name");
+		JTextField jtfNameFirst = new JTextField("Enter First Name");
 		JTextField jtfNameLast = new JTextField("Enter Last Name");
 		JTextField jtfNameMiddle = new JTextField("Enter Middle Initial");
 		JTextField jtfStreetNum = new JTextField("Enter Street Number");

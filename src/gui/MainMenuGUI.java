@@ -93,6 +93,16 @@ public class MainMenuGUI {
 		JButton jbtForgotPassword = new JButton();
 		jbtForgotPassword.setText("Forgot Password?");
 		panel2.add(jbtForgotPassword);
+		jbtForgotPassword.addActionListener(new ActionListener(){
+			public void actionPerformed (ActionEvent ae){
+				try{
+					RecoverPasswordGUI.main(new String[0]);
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		});
 
 	}
 

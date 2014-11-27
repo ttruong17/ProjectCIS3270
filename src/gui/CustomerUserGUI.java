@@ -23,7 +23,39 @@ public class CustomerUserGUI extends JFrame {
 		mainFrame.add(mainPanel);
 		mainPanel.add(panel1);
 		mainPanel.add(panel2);
-
+		
+		//create labels and text fields
+		JLabel lblUserName = new JLabel();
+		JLabel lblPassword = new JLabel();
+		JLabel lblSecurityA = new JLabel();
+		JLabel lblSecurityQ = new JLabel();
+		
+		JTextField tfUserName = new JTextField("Enter your username");
+		JTextField tfPassword = new JTextField("Enter your password");
+		JTextField tfSecurityQ = new JTextField("Write your security question");
+		JTextField tfSecurityA = new JTextField("write your security answer");
+		
+		lblUserName.setText("Choose user Name");
+		lblPassword.setText("Choose your password");
+		lblSecurityQ.setText("Questions goes here");
+		lblSecurityA.setText("Answer goes here");
+		
+		tfUserName.getText();
+		tfPassword.getText();
+		tfSecurityQ.getText();
+		tfSecurityA.getText();
+		
+		panel1.add(lblUserName);
+		panel1.add(tfUserName);
+		
+		panel1.add(lblPassword);
+		panel1.add(tfPassword);
+		
+		panel1.add(lblSecurityQ);
+		panel1.add(tfSecurityQ);
+		panel1.add(lblSecurityA);
+		panel1.add(tfSecurityQ);
+		
 		// Create a button with text Submit
 		JButton jbtSubmit = new JButton("Submit");
 		jbtSubmit.addActionListener(null);
