@@ -62,7 +62,14 @@ public class MainMenuGUI {
 		// Create a button with text Exit
 		// will exit the application
 		JButton jbtCancel = new JButton("Exit");
-		jbtCancel.addActionListener(null);
+		jbtCancel.addActionListener(new ActionListener() {
+		      @Override
+		      public void actionPerformed(ActionEvent evt) {
+		           System.exit(0);
+		      }
+		});
+		jbtCancel.setHorizontalTextPosition(SwingConstants.LEFT);   
+
 
 		panel1.add(jbtSubmit); // Add the OK button to the panel
 		panel1.add(jbtCancel); // Add the Cancel button to the panel

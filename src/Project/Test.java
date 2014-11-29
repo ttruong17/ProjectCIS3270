@@ -17,11 +17,4 @@ public class Test {
 			}
 		});
 	}
-	// MainMenuGUI mainMenu = new MainMenuGUI();
-
-	// Customers customer1 = new Customers();
-
-	// CustomerGUI customer10 = new CustomerGUI();
-
 }
-

@@ -44,6 +44,8 @@ public class CustomerGUI extends JFrame {
 		// Create a button with text Cancel
 		JButton jbtCancel = new JButton("Cancel");
 		jbtCancel.addActionListener(null);
+		jbtCancel.setHorizontalTextPosition(SwingConstants.RIGHT);   
+
 
 		// Create a label with text "Enter your name: "
 		JLabel jlblNameFirst = new JLabel("First Name: ");
