@@ -51,7 +51,7 @@ public class RecoverPasswordGUI extends JFrame {
 		jbtCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent evt) {
-				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				frame.dispose();
 			}
 		});
 

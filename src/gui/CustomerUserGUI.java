@@ -94,8 +94,12 @@ public class CustomerUserGUI extends JFrame {
 		// Create a button with text Cancel
 		JButton jbtCancel = new JButton("Cancel");
 		jbtCancel.addActionListener(null);
-		jbtCancel.setHorizontalTextPosition(SwingConstants.RIGHT);
-
+		jbtCancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent evt) {
+				mainFrame.dispose();
+			}
+		});
 		// add the buttons to the panel
 		panel2.add(jbtSubmit);
 		panel2.add(jbtCancel);

@@ -9,8 +9,9 @@ import project.Customers;
 
 public class Test {
 
-	public static void main(String[] args) {
-
+	@SuppressWarnings("static-access")
+	public static void main(String[] args) throws InterruptedException {
+Thread.currentThread().sleep(100);
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new MainMenuGUI();

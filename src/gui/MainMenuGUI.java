@@ -47,8 +47,8 @@ public class MainMenuGUI {
 		JLabel jlblPassword = new JLabel();
 		jlblPassword.setText("Password");
 
-		JTextField jtfUserName = new JTextField(" Enter User Name");
-		JTextField jtfPassword = new JTextField(" Enter Password");
+		final JTextField jtfUserName = new JTextField(" Enter User Name");
+		final JTextField jtfPassword = new JTextField(" Enter Password");
 
 		panel1.add(jlblUserName);
 		panel1.add(jtfUserName);
@@ -57,7 +57,15 @@ public class MainMenuGUI {
 
 		// Create a button with text Enter
 		JButton jbtSubmit = new JButton("Enter");
-		jbtSubmit.addActionListener(null);
+		jbtSubmit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				//insert code to check username and password credentials to Credentials.java
+				 jtfUserName.getText();
+				 jtfPassword.getText();
+				 
+				 
+			}
+		});
 
 		// Create a button with text Exit
 		// will exit the application
@@ -83,9 +91,14 @@ public class MainMenuGUI {
 		JButton jbtSignUp = new JButton();
 		jbtSignUp.setText("Sign up");
 		jbtSignUp.addActionListener(new ActionListener(){
+			@SuppressWarnings("deprecation")
 			public void actionPerformed (ActionEvent ae){
 				try{
 					CustomerGUI.main(new String[0]);
+					//hides the current frame
+					frame1.hide();
+					
+					
 				}
 				catch (Exception e){
 					e.printStackTrace();
