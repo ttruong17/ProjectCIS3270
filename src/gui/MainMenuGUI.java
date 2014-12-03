@@ -96,7 +96,8 @@ public class MainMenuGUI {
 				try{
 					CustomerGUI.main(new String[0]);
 					//hides the current frame
-					frame1.hide();
+					//buggy
+					//frame1.hide();
 					
 					
 				}
