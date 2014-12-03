@@ -99,7 +99,6 @@ public class MainMenuGUI {
 					//buggy
 					//frame1.hide();
 					
-					
 				}
 				catch (Exception e){
 					e.printStackTrace();

@@ -61,10 +61,30 @@ public class FlightsGUI {
 		panel1.add(jtfOrigin);
 		panel1.add(jlblDestination);
 		panel1.add(jtfDestination);
+		
+		// Create a button with text Search
+				JButton jbtSearch = new JButton("Search");
+				jbtSearch.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent ae) {
+						try {
+							// code must link to database to search for flights
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 
-		// panel 2
+				// add the buttons to the panel
+				panel1.add(jbtSearch);
 
-		JLabel lblDate1 = new JLabel();
+				
+		//panel 2 
+				//this panel displays the results from the database
+				
+				
+
+		//old panel 2 code
+	/*	JLabel lblDate1 = new JLabel();
 		lblDate1.setText("Departing Date:");
 		JLabel lblDate2 = new JLabel();
 		lblDate2.setText("Return Date");
@@ -80,23 +100,8 @@ public class FlightsGUI {
 
 		panel2.add(lblDate2);
 		panel2.add(txtDate2);
-
-		// panel 3 code
-		// Create a button with text Search
-		JButton jbtSearch = new JButton("Search");
-		jbtSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				try {
-					// code must link to database to search for flights
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-
-		// add the buttons to the panel
-		panel3.add(jbtSearch);
-
+	 */
+	
 	}
 
 	public static void main(String[] args) {
