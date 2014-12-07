@@ -1,5 +1,7 @@
 package project;
 
+import java.util.Arrays;
+
 import javax.swing.JPanel;
 
 public class Credentials {
@@ -18,6 +20,27 @@ public class Credentials {
 	
 	}
 
+	
+
+
+private boolean checkIfCorrect(String [] input) {
+	boolean isCorrect = false;
+	String [] correctPass = {"java"};
+	checkIfCorrect(input); {
+	
+	
+	if(input.length != correctPass.length) {
+		isCorrect = false;
+	} else {
+		isCorrect = Arrays.equals(input, correctPass);
+	}
+		Arrays.fill(correctPass, '0');
+		return isCorrect;
+
+	}};
+
+	
+	
 
 	/**
 	 * @return the UserName

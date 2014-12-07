@@ -3,9 +3,10 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.*;
-
+import javax.swing.*;
 public class MainMenuGUI {
 
 	JFrame frame1 = new JFrame();
@@ -59,17 +60,38 @@ public class MainMenuGUI {
 
 		// Create a button with text Enter
 		JButton jbtSubmit = new JButton("Enter");
-		jbtSubmit.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent evt){
-				//insert code to check username and password credentials to Credentials.java
+		jbtSubmit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e){
+						
+		//insert code to check username and password credentials to Credentials.java
 				 jtfUserName.getText();
-				 jtfPassword.getText();
+				 String input = jtfPassword.getText();
+				 
 				 
 				 
 				 
 			}
-		});
+			
+			private boolean checkIfCorrect(String [] input) {
+				boolean isCorrect = false;
+				String [] correctPass = {"java"};
+				checkIfCorrect(input); {
+				
+				
+				if(input.length != correctPass.length) {
+					isCorrect = false;
+				} else {
+					isCorrect = Arrays.equals(input, correctPass);
+				}
+					Arrays.fill(correctPass, '0');
+					return isCorrect;
+			
+				}}});
 
+		
+		
+		
 		// Create a button with text Exit
 		// will exit the application
 		JButton jbtCancel = new JButton("Exit");
