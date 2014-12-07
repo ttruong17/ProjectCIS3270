@@ -1,5 +1,7 @@
 package project;
 
+import javax.swing.JPanel;
+
 public class Credentials {
 
 	String userName;
@@ -7,13 +9,13 @@ public class Credentials {
 	
 	
 	public Credentials() {
-
+		
 	}
 
 	
 	public static void main(String[] args) {
-
-		
+	
+	
 	}
 
 

@@ -13,6 +13,8 @@ public class MainMenuGUI {
 	JPanel panel = new JPanel();
 	JPanel panel1 = new JPanel();
 	JPanel panel2 = new JPanel();
+	
+	
 
 	public MainMenuGUI() {
 
@@ -62,6 +64,7 @@ public class MainMenuGUI {
 				//insert code to check username and password credentials to Credentials.java
 				 jtfUserName.getText();
 				 jtfPassword.getText();
+				 
 				 
 				 
 			}
