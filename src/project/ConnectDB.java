@@ -14,17 +14,22 @@ public class ConnectDB {
     {
         try
         {
-            String url = "jdbc:sqlserver://localhost;databaseName=NightClub;integratedSecurity=true";   
+            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=NightClub;integratedSecurity=true;";   
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection conn = DriverManager.getConnection(url);
             System.out.println("connection created");
             Statement st=conn.createStatement();
-            String sql="select * from NightClub";
+            String sql="select * from Customer";
             ResultSet rs=st.executeQuery(sql);
+            
+            //System.out.println(sql);
+            //print out CID and FirstName
+            //filter fields to print
             while(rs.next())
             {
-                System.out.println("Name: "+rs.getString(1));
-                //System.out.println("Address : "+rs.getString(2));
+            	System.out.println("");
+                System.out.print("CustomerID: "+rs.getString(1));
+                System.out.print("FirstName : "+rs.getString(2));
             }
             if(st!=null)
             st.close();
@@ -35,7 +40,9 @@ public class ConnectDB {
         {
             System.out.println("Sql exception "+sqle);
         }
-    }	//this will connect to the database
+    }
+    
+    //this will connect to the database
 	public Connection connect() {
 		return null;
 	}
