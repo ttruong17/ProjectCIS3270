@@ -2,8 +2,6 @@ package project;
 
 import gui.CustomerGUI;
 import gui.MainMenuGUI;
-
-
 import project.Customers;
 
 public class Test {
@@ -16,5 +14,8 @@ Thread.currentThread().sleep(100);
 				new MainMenuGUI();
 			}
 		});
+		
+		ConnectDB connect = new ConnectDB();
+		connect.getData();
 	}
 }
