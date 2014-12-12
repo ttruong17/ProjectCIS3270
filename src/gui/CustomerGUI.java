@@ -38,6 +38,8 @@ public class CustomerGUI extends JFrame {
 		JLabel jlblCityName = new JLabel("City Name: ");
 		JLabel jlblStateName = new JLabel("State: ");
 		JLabel jlblZIP = new JLabel("ZIP Code: ");
+		JLabel jlblSSN = new JLabel("SSN: ");
+
 
 		// Create a text field with text "Type Name Here"
 		final JTextField jtfNameFirst = new JTextField("Enter First Name");
@@ -46,13 +48,14 @@ public class CustomerGUI extends JFrame {
 		final JTextField jtfCityName = new JTextField("Enter City Name");
 		final JTextField jtfStateName = new JTextField("Enter State Name");
 		final JTextField jtfZIPcode = new JTextField("Enter ZIP Code");
+		final JTextField jtfSSN = new JTextField("Enter SSN");
 
 		// Create a button with text continue
 		JButton jbtSubmit = new JButton("Continue");
 		jbtSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 
-				ConnectDB conn = new ConnectDB();
+/*				ConnectDB conn = new ConnectDB();
 				Connection cn = conn.connect();
 				CustomerUserGUI.main(new String[0]);
 				// temporal variables
@@ -62,6 +65,8 @@ public class CustomerGUI extends JFrame {
 				String city = jtfCityName.getText();
 				String state = jtfStateName.getText();
 				String zipCode = jtfZIPcode.getText();
+				String ssn = jtfSSN.getText();
+
 				String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)";
 
 				PreparedStatement pst;
@@ -79,6 +84,47 @@ public class CustomerGUI extends JFrame {
 
 					}
 				} catch (SQLException e) {
+					e.printStackTrace();
+				}*/
+				CustomerUserGUI.main(new String[0]);
+				// temporal variables
+				/*String firstName = jtfNameFirst.getText();
+				String lastName = jtfNameLast.getText();
+				String address = jtfAddress.getText();
+				String city = jtfCityName.getText();
+				String state = jtfStateName.getText();
+				String zipCode = jtfZIPcode.getText();
+				String ssn = jtfSSN.getText();*/
+
+
+				try {
+		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=NightClub;integratedSecurity=true;";   
+		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		            Connection conn = DriverManager.getConnection(url);
+					PreparedStatement pst;
+					String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code, SSN) VALUES(?,?,?,?,?,?,?)";
+
+		            pst = conn.prepareStatement(sql);
+
+					//pst = cn.prepareStatement(sql);
+		            String zipCode = jtfZIPcode.getText();
+		            String ssn = jtfSSN.getText();
+					pst.setString(1, jtfNameFirst.getText());
+					pst.setString(2, jtfNameLast.getText());
+					pst.setString(3, jtfAddress.getText());
+					pst.setString(4, jtfCityName.getText());
+					pst.setString(5, jtfStateName.getText());
+					pst.setLong(6, Long.parseLong(zipCode));
+					pst.setLong(7, Long.parseLong(ssn));
+					
+					//pst.executeUpdate();
+
+					int n = pst.executeUpdate();
+					if (n > 0) {
+						JOptionPane.showMessageDialog(null, "Saved");
+
+					}
+				} catch (SQLException | ClassNotFoundException e) {
 					e.printStackTrace();
 				}
 
@@ -107,6 +153,10 @@ public class CustomerGUI extends JFrame {
 
 		panel.add(jlblZIP);
 		panel.add(jtfZIPcode);
+		
+		panel.add(jlblSSN);
+		panel.add(jtfSSN);
+
 
 		panel.add(jbtSubmit); // Add the OK button to the panel
 		panel.add(jbtCancel); // Add the Cancel button to the panel
