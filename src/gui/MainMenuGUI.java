@@ -68,9 +68,7 @@ public class MainMenuGUI {
 				 jtfUserName.getText();
 				 String input = jtfPassword.getText();
 				 
-				 
-				 
-				 
+				 				 
 			}
 			
 			private boolean checkIfCorrect(String [] input) {
