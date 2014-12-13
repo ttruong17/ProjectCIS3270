@@ -11,7 +11,6 @@ import javax.swing.*;
 import project.ConnectDB;
 
 /*import javax.swing.*;
-
 import project.ConnectDB;
 import project.Customers;
 
@@ -235,8 +234,15 @@ public class CustomerGUI extends JFrame {
 		});
 
 		// Create a button with text Cancel
-		JButton jbtCancel = new JButton("Cancel");
-		jbtCancel.addActionListener(null);
+				JButton jbtCancel = new JButton("Cancel");
+				jbtCancel.addActionListener(new ActionListener(){
+
+					public void actionPerformed(ActionEvent arg0) {
+					frame.dispose();
+						
+					}
+				}
+		);
 		jbtCancel.setHorizontalTextPosition(SwingConstants.RIGHT);
 		
 		panel.add(jlblCustomerID);// Add the label to the panel

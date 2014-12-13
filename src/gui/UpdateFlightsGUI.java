@@ -20,7 +20,7 @@ public class UpdateFlightsGUI extends JFrame {
 	public UpdateFlightsGUI() {
 
 		//frame properties
-		frame1.setTitle("Admin - Update Window");
+		frame1.setTitle("Admin - Update Flight Window");
 		frame1.setSize(700, 400);
 		frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame1.setVisible(true);
@@ -36,7 +36,7 @@ public class UpdateFlightsGUI extends JFrame {
 
 		//title visible to the admin
 		JLabel title = new JLabel();
-		title.setText("Update and Delete fligth Info");
+		title.setText("Update fligth Info");
 		title.setFont(new Font("verdana", Font.PLAIN, 18));
 		panel.add(title);
 		panel1.setSize(new Dimension(50,50));
@@ -47,32 +47,39 @@ public class UpdateFlightsGUI extends JFrame {
 		updateTitle.setText("Update flight info");
 		panel1.add(updateTitle);
 		updateTitle.setAlignmentX(TOP_ALIGNMENT);
-		//show customer to be changed info
+		
+		//show flight to be changed
 			
-
 		//labels to add new customer information
-
+		JLabel flightID = new JLabel();
+		flightID.setText("Flight ID");
+		JTextField flightID1 = new JTextField();
+		flightID1.getText();
+		
 		JLabel updateDate = new JLabel();
 		updateDate.setText("Departure Date");
 		JTextField updateDate1 = new JTextField();
-		updateDate1.setText(" New Departure Date ");
+		updateDate1.getText();
 
 		JLabel updateTime = new JLabel (); 
 		updateTime.setText("Departure Time");
 		JTextField updateTime1 = new JTextField();
-		updateTime1.setText("New Departure Time");
+		updateTime1.getText();
 
 		JLabel updateDestinationDate = new JLabel();
 		updateDestinationDate.setText("Destination Date");
 		JTextField updateDestinationDate1 = new JTextField();
-		updateDestinationDate1.setText("New Destination Date");
+		updateDestinationDate1.getText();
 
 		JLabel updateDestinationTime = new JLabel();
 		updateDestinationTime.setText("Destination Time");
 		JTextField updateDestinationTime1 = new JTextField();
-		updateDestinationTime1.setText("New Destination Time");
+		updateDestinationTime1.getText();
 
 		panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
+		panel2.add(flightID);
+		panel2.add(flightID1);
+		
 		panel2.add(updateDate);
 		panel2.add(updateDate1);
 
@@ -98,21 +105,25 @@ public class UpdateFlightsGUI extends JFrame {
 		//create the update button
 		
 		JButton jbtUpdate = new JButton("Update");
-		jbtUpdate.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-			//code or reference to the class where it contains the prepared sql statement
+		jbtUpdate.addActionListener( new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				//code or reference to the class where it contains the prepared sql statement
 				//and the code to update the database records. 
-				
+								
 			}
 		});
-
+	
 		//panel 3 properties
+		// this is where the update button and cancel button reside
 		panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
 		panel3.add(jbtUpdate);
 		panel3.add(jbtCancel);
 		
 	}
 
+	
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -120,5 +131,5 @@ public class UpdateFlightsGUI extends JFrame {
 			}
 		});
 	}
-
 }
+

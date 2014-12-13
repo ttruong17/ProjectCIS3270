@@ -3,30 +3,6 @@ import java.sql.*;
 
 public class ConnectDB {
 
-<<<<<<< HEAD
-
-	public void PreparedStatement (String sql) {
-		try{
-		PreparedStatement pst = conn.prepareStatement("INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)");
-
-		}
-		catch(Exception ex){
-			System.out.println(ex);
-
-		}
-		
-=======
-	public ConnectDB() {
-		// TODO Auto-generated constructor stub
->>>>>>> origin/master
-	}
-
-	/**
-	 * @param args
-	 * @return 
-	 * @return 
-	 * @return 
-	 */
     public static void main (String a[]) throws ClassNotFoundException, SQLException
     {
         try
@@ -59,29 +35,5 @@ public class ConnectDB {
             System.out.println("Sql exception "+sqle1);
         }
     }
-    
-    //this will connect to the database
-	public Connection connect() {
-		return null;
-	}
 
-<<<<<<< HEAD
-
-	public PreparedStatement preparedStatement(String sql) {
-		try{
-			PreparedStatement pst = conn.prepareStatement("INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)");
-
-			}
-			catch(Exception ex){
-				System.out.println(ex);
-
-			}
-		return null;
-	}
-
-	
-	
-
-=======
->>>>>>> origin/master
 }
