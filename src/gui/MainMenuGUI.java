@@ -3,6 +3,9 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 import javax.swing.*;
@@ -14,7 +17,6 @@ public class MainMenuGUI {
 	JPanel panel = new JPanel();
 	JPanel panel1 = new JPanel();
 	JPanel panel2 = new JPanel();
-	
 	
 
 	public MainMenuGUI() {
@@ -52,7 +54,11 @@ public class MainMenuGUI {
 
 		final JTextField jtfUserName = new JTextField("Enter User Name");
 		final JPasswordField jtfPassword = new JPasswordField("Enter Password");
-
+		jtfUserName.getText();
+		
+		final String userName = jtfUserName.getText();
+		final String password = jtfPassword.toString();
+		
 		panel1.add(jlblUserName);
 		panel1.add(jtfUserName);
 		panel1.add(jlblPassword);
@@ -62,38 +68,50 @@ public class MainMenuGUI {
 		
 		//button to login to system
 		// Create a button with text Enter
-		JButton jbtSubmit = new JButton("Enter");
+		JButton jbtSubmit = new JButton("Log-in");
 		jbtSubmit.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e){
 						
-		//insert code to check username and password credentials to Credentials.java
-//				 jtfUserName.getText();
-//				 String input = jtfPassword.toString();
-//				 
-//				 				 
-//			}
-//			
-//			private boolean checkIfCorrect(String input) {
-//				boolean isCorrect = false;
-//				String correctPass = {"java"};
-//				checkIfCorrect(input); {
-//				
-//				
-//				if(input.length != correctPass.length) {
-//					isCorrect = false;
-//				} else {
-//					isCorrect = Arrays.equals(input, correctPass);
-//				}
-//					Arrays.fill(correctPass, '0');
-//					return isCorrect;
-//			
-				//}
+				final String dbName = "newjava";
+				//check for driver
+				 try {
+				 
+				 Class.forName("com.mysql.jdbc.Driver");
+				 
+				 } catch (ClassNotFoundException ex) {
+				 ex.printStackTrace();
+				 }
+				 
+				 Connection connection = null;
+				 //initiate connection
+				 try {
+				 connection = DriverManager
+				 .getConnection("jdbc:mysql://localhost:3306/" + dbName,
+				 userName, password);
+				 
+				 } catch (SQLException ex) {
+				 ex.printStackTrace();
+				 }
+				 //test connection
+				 if (connection != null) {
+				 System.out.println("Successfullly connected to MySQL DB");
+				 try{
+						CustomerGUI.main(new String[0]);
+						//hides the current frame
+						//buggy
+						//frame1.hide();
+						
+					}
+					catch (Exception ex){
+						ex.printStackTrace();
+					}
+				 } else {
+				 System.out.println("Failed to connect to MySQL DB");
+				 }
+				 
 				}
 			});
-
-		
-		
 		
 		// Create a button with text Exit
 		// will exit the application

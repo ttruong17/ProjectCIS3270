@@ -60,30 +60,30 @@ public class UpdateFlightsGUI extends JFrame {
 		JLabel updateTime = new JLabel (); 
 		updateTime.setText("Departure Time");
 		JTextField updateTime1 = new JTextField();
-		updateTime1.setText("New Time");
+		updateTime1.setText("New Departure Time");
 
-		JLabel update = new JLabel();
-		updateState.setText("State");
-		JTextField updateState1 = new JTextField();
-		updateState1.setText("New State");
+		JLabel updateDestinationDate = new JLabel();
+		updateDestinationDate.setText("Destination Date");
+		JTextField updateDestinationDate1 = new JTextField();
+		updateDestinationDate1.setText("New Destination Date");
 
-		JLabel updateZipCode = new JLabel();
-		updateZipCode.setText("ZIP Code");
-		JTextField updateZipCode1 = new JTextField();
-		updateZipCode1.setText("New ZIP Code");
+		JLabel updateDestinationTime = new JLabel();
+		updateDestinationTime.setText("Destination Time");
+		JTextField updateDestinationTime1 = new JTextField();
+		updateDestinationTime1.setText("New Destination Time");
 
 		panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
-		panel2.add(updateAddress);
-		panel2.add(updateAddress1);
+		panel2.add(updateDate);
+		panel2.add(updateDate1);
 
-		panel2.add(updateCity);
-		panel2.add(updateCity1);
+		panel2.add(updateTime);
+		panel2.add(updateTime1);
 
-		panel2.add(updateState);
-		panel2.add(updateState1);
+		panel2.add(updateDestinationDate);
+		panel2.add(updateDestinationDate1);
 
-		panel2.add(updateZipCode);
-		panel2.add(updateZipCode1);
+		panel2.add(updateDestinationTime);
+		panel2.add(updateDestinationTime1);
 
 		// Create a button with text Cancel
 		JButton jbtCancel = new JButton("Cancel");

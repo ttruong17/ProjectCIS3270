@@ -3,7 +3,8 @@ package gui;
 public class TicketsGUI {
 
 	public TicketsGUI() {
-		// TODO Auto-generated constructor stub
+	
+
 	}
 
 

@@ -28,7 +28,7 @@ public class NewCustomerAction implements ActionListener  {
 		String city = jtfCityName.getText();
 		String state = jtfStateName.getText();
 		String zipCode = jtfZIPcode.getText();
-		String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES('','','','','','')";
+		String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)";
 
 		PreparedStatement pst;
 		try {

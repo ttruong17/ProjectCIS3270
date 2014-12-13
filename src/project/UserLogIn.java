@@ -2,8 +2,12 @@ package project;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
+
 import javax.swing.JOptionPane;
 import gui.MainMenuGUI;
 
@@ -43,30 +47,7 @@ public class UserLogIn implements ActionListener {
 	ConnectDB connection = new ConnectDB();
 	MainMenuGUI menu = new MainMenuGUI(); 
 	
-	
-	/* created to test connectivity to the database via scanner
-	public void checkCredentials() {
-	//Get username from MainMenuGUI
-	String userNameMainMenu = menu.;
-	//Get password from MainMenuGUI
-	String passwordMainMenu = "adminsrock";
-	//Get Username from Database
-	String usernameDB = "admin";
-	//Get Password from Database
-	String passwordDB = "adminsrock";
-	
-	//method to compare username and password
-	if(userNameMainMenu.matches(usernameDB)&& passwordMainMenu.matches(passwordDB)){
-		System.out.println("success");
-	}
-	else{
-		System.out.println("credentials do not match");
-	}
-	//return the 
-	}
-	*/
-	
-	
+
 	public UserLogIn() {
 		// TODO Auto-generated constructor stub
 	}

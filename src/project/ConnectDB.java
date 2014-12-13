@@ -46,7 +46,7 @@ public class ConnectDB {
 	}
 
 
-	public PreparedStatement (String sql) {
+	public void PreparedStatement (String sql) {
 		try{
 		PreparedStatement pst = conn.prepareStatement("INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)");
 
@@ -55,12 +55,25 @@ public class ConnectDB {
 			System.out.println(ex);
 
 		}
-		return pst;
+		
 	}
 
 
 	public Connection connect() {
 	
+		return null;
+	}
+
+
+	public PreparedStatement preparedStatement(String sql) {
+		try{
+			PreparedStatement pst = conn.prepareStatement("INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)");
+
+			}
+			catch(Exception ex){
+				System.out.println(ex);
+
+			}
 		return null;
 	}
 

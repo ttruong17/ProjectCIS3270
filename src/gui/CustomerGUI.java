@@ -34,6 +34,7 @@ public class CustomerGUI extends JFrame {
 		// Create a label with text "Enter your name: "
 		JLabel jlblNameFirst = new JLabel("First Name: ");
 		JLabel jlblNameLast = new JLabel("Last Name: ");
+		JLabel jlblSSN = new JLabel("Social Security");
 		JLabel jlblAddress = new JLabel("Address: ");
 		JLabel jlblCityName = new JLabel("City Name: ");
 		JLabel jlblStateName = new JLabel("State: ");
@@ -42,6 +43,7 @@ public class CustomerGUI extends JFrame {
 		// Create a text field with text "Type Name Here"
 		final JTextField jtfNameFirst = new JTextField("Enter First Name");
 		final JTextField jtfNameLast = new JTextField("Enter Last Name");
+		final JTextField jtfSSN = new JTextField("Enter SSN");
 		final JTextField jtfAddress = new JTextField("Enter Address");
 		final JTextField jtfCityName = new JTextField("Enter City Name");
 		final JTextField jtfStateName = new JTextField("Enter State Name");
@@ -53,37 +55,6 @@ public class CustomerGUI extends JFrame {
 		jbtSubmit.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent ae) {
-
-				ConnectDB conn = new ConnectDB();
-				Connection cn = conn.connect();
-				CustomerUserGUI.main(new String[0]);
-				
-				// temporal variables
-				String firstName = jtfNameFirst.getText();
-				String lastName = jtfNameLast.getText();
-				String address = jtfAddress.getText();
-				String city = jtfCityName.getText();
-				String state = jtfStateName.getText();
-				String zipCode = jtfZIPcode.getText();
-				String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)";
-
-				PreparedStatement pst;
-				try {
-					pst = cn.prepareStatement(sql);
-					pst.setString(1, firstName);
-					pst.setString(2, lastName);
-					pst.setString(3, address);
-					pst.setString(4, city);
-					pst.setString(5, state);
-					pst.setString(6, zipCode);
-					int n = pst.executeUpdate();
-					if (n > 0) {
-						JOptionPane.showMessageDialog(null, "Saved");
-
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
 
 			}
 		});
@@ -107,6 +78,9 @@ public class CustomerGUI extends JFrame {
 		panel.add(jlblNameLast);
 		panel.add(jtfNameLast);
 
+		panel.add(jlblSSN);
+		panel.add(jtfSSN);
+		
 		panel.add(jlblAddress);
 		panel.add(jtfAddress);
 

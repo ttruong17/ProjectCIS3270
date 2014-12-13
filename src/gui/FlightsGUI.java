@@ -7,7 +7,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
 public class FlightsGUI {
@@ -43,6 +45,9 @@ public class FlightsGUI {
 		jlblWelcome.setText("Flight Search  ");
 		jlblWelcome.setFont(new Font("Courier New", Font.ITALIC, 16));
 
+		//Admin only features
+		
+	
 		// add the welcome Message to panel
 		panel.add(jlblWelcome);
 
@@ -79,8 +84,6 @@ public class FlightsGUI {
 				
 		//panel 2 
 				//this panel displays the results from the database
-				
-				
 
 		//old panel 2 code
 	/*	JLabel lblDate1 = new JLabel();

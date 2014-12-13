@@ -1,6 +1,7 @@
 package gui;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -39,14 +40,21 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		title.setText("Update and Delete customer Info");
 		title.setFont(new Font("verdana", Font.PLAIN, 18));
 		panel.add(title);
-		panel1.setSize(new Dimension(50,50));
+		
 
 		//update menu
-
+		// disclaimer
+		
 		JLabel updateTitle = new JLabel();
 		updateTitle.setText("Update customer info");
+		
+		JLabel disclaimer = new JLabel();
+		disclaimer.setText("To delete a customer type the customer ID and name.");
+		
+		panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
 		panel1.add(updateTitle);
-		updateTitle.setAlignmentX(TOP_ALIGNMENT);
+		panel1.add(disclaimer);
+		
 		//show customer to be changed info
 			
 
@@ -105,11 +113,22 @@ public class UpdateCustomerInfoGUI extends JFrame {
 				
 			}
 		});
+		
+		//delete customer 
+		JButton jbtDelete = new JButton("Delete");
+		jbtUpdate.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+			//code or reference to the class where it contains the prepared sql statement
+				//and the code to delete the database records. 
+				
+			}
+		});
 
 		//panel 3 properties
 		panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
 		panel3.add(jbtUpdate);
 		panel3.add(jbtCancel);
+		panel3.add(jbtDelete);
 		
 	}
 
