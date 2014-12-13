@@ -16,6 +16,6 @@ Thread.currentThread().sleep(100);
 		});
 		
 		ConnectDB connect = new ConnectDB();
-		connect.getData();
+		
 	}
 }
