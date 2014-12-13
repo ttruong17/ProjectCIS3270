@@ -71,14 +71,12 @@ public class MainMenuGUI {
 				 jtfUserName.getText();
 				 String input = jtfPassword.toString();
 				 
-				 
-				 
-				 
+				 				 
 			}
 			
-			private boolean checkIfCorrect(String [] input) {
+			private boolean checkIfCorrect(String input) {
 				boolean isCorrect = false;
-				String [] correctPass = {"java"};
+				String correctPass = {"java"};
 				checkIfCorrect(input); {
 				
 				

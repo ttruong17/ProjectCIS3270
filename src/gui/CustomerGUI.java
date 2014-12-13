@@ -1,18 +1,19 @@
 package gui;
 
-import java.awt.Window;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import javax.swing.*;
-import project.NewCustomerAction;
-import project.Customers;
+import java.util.logging.Logger;
 
+import javax.swing.*;
+
+import project.ConnectDB;
+import project.Customers;
 
 public class CustomerGUI extends JFrame {
 
 	private static final long serialVersionUID = 100001L;
-
 	JPanel panel = new JPanel();
 	// JFrame mainFrame = new JFrame();
 	JFrame frame = new JFrame(); // Create a frame
@@ -31,12 +32,12 @@ public class CustomerGUI extends JFrame {
 		frame.add(panel); // Add the panel to the frame
 
 		// Create a label with text "Enter your name: "
-		final JLabel jlblNameFirst = new JLabel("First Name: ");
-		final JLabel jlblNameLast = new JLabel("Last Name: ");
-		final JLabel jlblAddress = new JLabel("Address: ");
-		final JLabel jlblCityName = new JLabel("City Name: ");
-		final JLabel jlblStateName = new JLabel("State: ");
-		final JLabel jlblZIP = new JLabel("ZIP Code: ");
+		JLabel jlblNameFirst = new JLabel("First Name: ");
+		JLabel jlblNameLast = new JLabel("Last Name: ");
+		JLabel jlblAddress = new JLabel("Address: ");
+		JLabel jlblCityName = new JLabel("City Name: ");
+		JLabel jlblStateName = new JLabel("State: ");
+		JLabel jlblZIP = new JLabel("ZIP Code: ");
 
 		// Create a text field with text "Type Name Here"
 		final JTextField jtfNameFirst = new JTextField("Enter First Name");
@@ -48,19 +49,46 @@ public class CustomerGUI extends JFrame {
 
 		// Create a button with text continue
 		JButton jbtSubmit = new JButton("Continue");
-		jbtSubmit.addActionListener(new NewCustomerAction(){
-			
+		jbtSubmit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+
+				ConnectDB conn = new ConnectDB();
+				Connection cn = conn.connect();
+				CustomerUserGUI.main(new String[0]);
+				// temporal variables
+				String firstName = jtfNameFirst.getText();
+				String lastName = jtfNameLast.getText();
+				String address = jtfAddress.getText();
+				String city = jtfCityName.getText();
+				String state = jtfStateName.getText();
+				String zipCode = jtfZIPcode.getText();
+				String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)";
+
+				PreparedStatement pst;
+				try {
+					pst = cn.prepareStatement(sql);
+					pst.setString(1, firstName);
+					pst.setString(2, lastName);
+					pst.setString(3, address);
+					pst.setString(4, city);
+					pst.setString(5, state);
+					pst.setString(6, zipCode);
+					int n = pst.executeUpdate();
+					if (n > 0) {
+						JOptionPane.showMessageDialog(null, "Saved");
+
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+			}
 		});
 
 		// Create a button with text Cancel
 		JButton jbtCancel = new JButton("Cancel");
-		jbtCancel.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();	
-			}
-		});
+		jbtCancel.addActionListener(null);
 		jbtCancel.setHorizontalTextPosition(SwingConstants.RIGHT);
-		
 
 		panel.add(jlblNameFirst);// Add the label to the panel
 		panel.add(jtfNameFirst); // Add the text field to the panel
@@ -82,17 +110,7 @@ public class CustomerGUI extends JFrame {
 
 		panel.add(jbtSubmit); // Add the OK button to the panel
 		panel.add(jbtCancel); // Add the Cancel button to the panel
-	
-	}
 
-	protected static void action(int disposeOnClose, boolean b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	protected static void actionPerformed() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public static void main(String[] args) {
