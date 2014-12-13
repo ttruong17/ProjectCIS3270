@@ -75,35 +75,53 @@ public class MainMenuGUI {
 				 				 
 			}
 			
-			public void main(String input) {
-				
+			private void login() {
+			    try {
+			       if (user != null && pass!=null) {
+			       sql = "Select * from users_table Where username='" + username + "' and password='" + password;
+			       rs = stmt.executeQuery(sql);
+			       if( rs.next()){
+			            //Enter when at least one result comes it means user is valid
+			       } else {
+			            //in this case enter when  result size is zero  it means user is invalid
+			       }
+			   }
+
+			//You can also validate user by result size if its comes zero user is invalid else user is valid
+
+
+			    } catch (SQLException err) {
+			        JOptionPane.showMessageDialog(this, err.getMessage());
+			    }
+
+			}				
 			}
 			});
 			
 			
 				
 =======
-//				 jtfUserName.getText();
-//				 String input = jtfPassword.toString();
-//				 
-//				 				 
-//			}
-//			
-//			private boolean checkIfCorrect(String input) {
-//				boolean isCorrect = false;
-//				String correctPass = {"java"};
-//				checkIfCorrect(input); {
-//				
-//				
-//				if(input.length != correctPass.length) {
-//					isCorrect = false;
-//				} else {
-//					isCorrect = Arrays.equals(input, correctPass);
-//				}
-//					Arrays.fill(correctPass, '0');
-//					return isCorrect;
-//			
+				//				 jtfUserName.getText();
+				//String input = jtfPassword.toString();
+				//
+				//				 
 				//}
+				//
+				//private boolean checkIfCorrect(String input) {
+				//boolean isCorrect = false;
+				//String correctPass = {"java"};
+				//checkIfCorrect(input); {
+				//
+				//
+				//if(input.length != correctPass.length) {
+				//	isCorrect = false;
+				//} else {
+				//	isCorrect = Arrays.equals(input, correctPass);
+				//}
+				//	Arrays.fill(correctPass, '0');
+				//	return isCorrect;
+				//			
+								//}
 				}
 			});
 
