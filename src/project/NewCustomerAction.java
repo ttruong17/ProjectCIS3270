@@ -19,7 +19,7 @@ public class NewCustomerAction implements ActionListener  {
 	public void actionPerformed(ActionEvent ae) {
 
 		ConnectDB conn = new ConnectDB();
-		conn.getData();
+		
 		
 		// temporal variables
 		String firstName = jtfNameFirst.getText();
@@ -32,7 +32,7 @@ public class NewCustomerAction implements ActionListener  {
 
 		PreparedStatement pst;
 		try {
-			pst = conn.prepareStatement(sql);
+			pst = conn.preparedStatement(sql);
 			pst.setString(1, firstName);
 			pst.setString(2, lastName);
 			pst.setString(3, address);

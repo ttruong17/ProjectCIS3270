@@ -47,14 +47,17 @@ public class CustomerGUI extends JFrame {
 		final JTextField jtfStateName = new JTextField("Enter State Name");
 		final JTextField jtfZIPcode = new JTextField("Enter ZIP Code");
 
+		// Creates submits to the database and continues to the next form 
 		// Create a button with text continue
 		JButton jbtSubmit = new JButton("Continue");
 		jbtSubmit.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent ae) {
 
 				ConnectDB conn = new ConnectDB();
 				Connection cn = conn.connect();
 				CustomerUserGUI.main(new String[0]);
+				
 				// temporal variables
 				String firstName = jtfNameFirst.getText();
 				String lastName = jtfNameLast.getText();
@@ -87,8 +90,16 @@ public class CustomerGUI extends JFrame {
 
 		// Create a button with text Cancel
 		JButton jbtCancel = new JButton("Cancel");
-		jbtCancel.addActionListener(null);
+		jbtCancel.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+			frame.dispose();
+				
+			}
+		}
+);
 		jbtCancel.setHorizontalTextPosition(SwingConstants.RIGHT);
+		
 
 		panel.add(jlblNameFirst);// Add the label to the panel
 		panel.add(jtfNameFirst); // Add the text field to the panel

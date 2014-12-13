@@ -11,22 +11,19 @@ public class UserLogIn implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
 
 		ConnectDB conn = new ConnectDB();
-	
-		//FlightsGUI.main(new String[0]);
 		
 		// temporal variables
-		String userNameMainMenu = jtfUserName;
-		String lastName = jtfNameLast.getText();
-		String address = jtfAddress.getText();
-		String city = jtfCityName.getText();
-		String state = jtfStateName.getText();
-		String zipCode = jtfZIPcode.getText();
+		String userNameMainMenu = jtfUserName.getText();
+		String passwordMainMenu = jtfPassword.getText();
+		String userNameDB;
+		String passwordDB ;
+		
 		String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)";
 
 		PreparedStatement pst;
 		try {
-			pst = conn.prepareStatement(sql);
-			pst.setString(1, firstName);
+			pst = conn.PreparedStatement(sql);
+			pst.setString(1, userNameMainMenu);
 			pst.setString(2, lastName);
 			pst.setString(3, address);
 			pst.setString(4, city);
@@ -43,10 +40,11 @@ public class UserLogIn implements ActionListener {
 
 	}
 	
-	
 	ConnectDB connection = new ConnectDB();
 	MainMenuGUI menu = new MainMenuGUI(); 
 	
+	
+	/* created to test connectivity to the database via scanner
 	public void checkCredentials() {
 	//Get username from MainMenuGUI
 	String userNameMainMenu = menu.;
@@ -66,6 +64,8 @@ public class UserLogIn implements ActionListener {
 	}
 	//return the 
 	}
+	*/
+	
 	
 	public UserLogIn() {
 		// TODO Auto-generated constructor stub
@@ -74,7 +74,7 @@ public class UserLogIn implements ActionListener {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		checkCredentials();
+		
 	}
 
 }

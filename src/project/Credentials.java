@@ -20,9 +20,6 @@ public class Credentials {
 	
 	}
 
-	
-
-
 	/**
 	 * @return the UserName
 	 */

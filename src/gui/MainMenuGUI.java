@@ -50,8 +50,8 @@ public class MainMenuGUI {
 		JLabel jlblPassword = new JLabel();
 		jlblPassword.setText("Password");
 
-		final JTextField jtfUserName = new JTextField(" Enter User Name");
-		final JTextField jtfPassword = new JTextField(" Enter Password");
+		final JTextField jtfUserName = new JTextField("Enter User Name");
+		final JPasswordField jtfPassword = new JPasswordField("Enter Password");
 
 		panel1.add(jlblUserName);
 		panel1.add(jtfUserName);
@@ -68,6 +68,7 @@ public class MainMenuGUI {
 			public void actionPerformed(ActionEvent e){
 						
 		//insert code to check username and password credentials to Credentials.java
+<<<<<<< HEAD
 				 jtfUserName.getText();
 				 String input = jtfPassword.toString();
 				 
@@ -81,6 +82,32 @@ public class MainMenuGUI {
 			
 			
 				
+=======
+//				 jtfUserName.getText();
+//				 String input = jtfPassword.toString();
+//				 
+//				 				 
+//			}
+//			
+//			private boolean checkIfCorrect(String input) {
+//				boolean isCorrect = false;
+//				String correctPass = {"java"};
+//				checkIfCorrect(input); {
+//				
+//				
+//				if(input.length != correctPass.length) {
+//					isCorrect = false;
+//				} else {
+//					isCorrect = Arrays.equals(input, correctPass);
+//				}
+//					Arrays.fill(correctPass, '0');
+//					return isCorrect;
+//			
+				//}
+				}
+			});
+
+>>>>>>> origin/master
 		
 		
 		
@@ -108,7 +135,7 @@ public class MainMenuGUI {
 		JButton jbtSignUp = new JButton();
 		jbtSignUp.setText("Sign up");
 		jbtSignUp.addActionListener(new ActionListener(){
-			@SuppressWarnings("deprecation")
+			
 			public void actionPerformed (ActionEvent ae){
 				try{
 					CustomerGUI.main(new String[0]);
@@ -141,7 +168,7 @@ public class MainMenuGUI {
 			}
 		});
 
-	}
+		}
 
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {

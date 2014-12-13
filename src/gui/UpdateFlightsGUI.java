@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class UpdateCustomerInfoGUI extends JFrame {
+public class UpdateFlightsGUI extends JFrame {
 
 	private static final long serialVersionUID = 1267588182839853118L;
 
@@ -17,7 +17,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 	JPanel panel2 = new JPanel();
 	JPanel panel3 = new JPanel();
 
-	public UpdateCustomerInfoGUI() {
+	public UpdateFlightsGUI() {
 
 		//frame properties
 		frame1.setTitle("Admin - Update Window");
@@ -36,7 +36,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 
 		//title visible to the admin
 		JLabel title = new JLabel();
-		title.setText("Update and Delete customer Info");
+		title.setText("Update and Delete fligth Info");
 		title.setFont(new Font("verdana", Font.PLAIN, 18));
 		panel.add(title);
 		panel1.setSize(new Dimension(50,50));
@@ -44,7 +44,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		//update menu
 
 		JLabel updateTitle = new JLabel();
-		updateTitle.setText("Update customer info");
+		updateTitle.setText("Update flight info");
 		panel1.add(updateTitle);
 		updateTitle.setAlignmentX(TOP_ALIGNMENT);
 		//show customer to be changed info
@@ -52,17 +52,17 @@ public class UpdateCustomerInfoGUI extends JFrame {
 
 		//labels to add new customer information
 
-		JLabel updateAddress = new JLabel();
-		updateAddress.setText("Address");
-		JTextField updateAddress1 = new JTextField();
-		updateAddress1.setText(" New Address ");
+		JLabel updateDate = new JLabel();
+		updateDate.setText("Departure Date");
+		JTextField updateDate1 = new JTextField();
+		updateDate1.setText(" New Departure Date ");
 
-		JLabel updateCity = new JLabel (); 
-		updateCity.setText("City");
-		JTextField updateCity1 = new JTextField();
-		updateCity1.setText("New City");
+		JLabel updateTime = new JLabel (); 
+		updateTime.setText("Departure Time");
+		JTextField updateTime1 = new JTextField();
+		updateTime1.setText("New Time");
 
-		JLabel updateState = new JLabel();
+		JLabel update = new JLabel();
 		updateState.setText("State");
 		JTextField updateState1 = new JTextField();
 		updateState1.setText("New State");
@@ -116,7 +116,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new UpdateCustomerInfoGUI();
+				new UpdateFlightsGUI();
 			}
 		});
 	}
