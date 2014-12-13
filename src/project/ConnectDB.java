@@ -19,13 +19,7 @@ public class ConnectDB {
 			System.out.println("error" + ex);
 		}
 	}
-	//all connection credentials set here
-    //change the USERNAME and PASSWORD here to allow it to connect to any local database
-    private final String USERNAME = "precision";
-    private final String PASSWORD = "rocks";
-    private final String connectionStr =
-            "jdbc:hsqldb:file:data/phms;shutdown=true";
- 
+	
 	
 	//retrieves records from data base and prints them out
 	public void getData(){
@@ -37,7 +31,7 @@ public class ConnectDB {
 			while(rs.next()){
 				String customerID = rs.getString("CustomerID");
 				String firstName = rs.getString("FirstName");
-				System.out.println("name: " + customerID + " " + "age: " +firstName + " " );
+				System.out.println("ID: " + customerID + " " + "name: " +firstName + " " );
 			}
 			
 		} catch(Exception ex){
@@ -46,51 +40,24 @@ public class ConnectDB {
 		}
 	}
 	
-	private boolean openConnection()
-    {
-        try {
-            System.out.println("about to open the connection");
-            conn = DriverManager.getConnection(connectionStr, USERNAME, PASSWORD);
-            return true;
-        }
-        catch (SQLException e) {
-            System.out.println("Unable to connect\nCause: "+e.getCause());
-            System.out.println(e);
-            return false;
-        } 
-    }
-	
-	public Connection getConnection()
-    {
-        if (conn == null) {
-            if (openConnection()) {
-                System.out.println("Connection opened");
-                return conn;
-            } else {
-                return null;
-            }
-        }
-        return conn;
-    }
- 
-    //close the connection
-    public void close() {
-        System.out.println("Closing connection");
-        try {
-            conn.close();
-            conn = null;
-        } catch (Exception e) {
-        }
-    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
 
-	public PreparedStatement prepareStatement(String sql) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public void prepareStatement(String sql) {
+		try{
+		PreparedStatement pst = conn.prepareStatement("INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)");
+
+		}
+		catch(Exception ex){
+			System.out.println(ex);
+
+		}
+		
 	}
+
 	
 	
 

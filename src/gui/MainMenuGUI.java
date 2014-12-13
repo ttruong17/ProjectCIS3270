@@ -57,16 +57,19 @@ public class MainMenuGUI {
 		panel1.add(jtfUserName);
 		panel1.add(jlblPassword);
 		panel1.add(jtfPassword);
-
+		
+		
+		
+		//button to login to system
 		// Create a button with text Enter
 		JButton jbtSubmit = new JButton("Enter");
 		jbtSubmit.addActionListener(new ActionListener() {
-			@Override
+			
 			public void actionPerformed(ActionEvent e){
 						
 		//insert code to check username and password credentials to Credentials.java
 				 jtfUserName.getText();
-				 String input = jtfPassword.getText();
+				 String input = jtfPassword.toString();
 				 
 				 
 				 

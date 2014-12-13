@@ -1,21 +1,18 @@
 package gui;
 
-import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
-import java.util.logging.Logger;
 import javax.swing.*;
-
-import project.ConnectDB;
-import project.Customers;
 import project.NewCustomerAction;
+import project.Customers;
 
 
 public class CustomerGUI extends JFrame {
 
 	private static final long serialVersionUID = 100001L;
-	
+
 	JPanel panel = new JPanel();
 	// JFrame mainFrame = new JFrame();
 	JFrame frame = new JFrame(); // Create a frame
@@ -51,47 +48,19 @@ public class CustomerGUI extends JFrame {
 
 		// Create a button with text continue
 		JButton jbtSubmit = new JButton("Continue");
-		jbtSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				ConnectDB conn = new ConnectDB();
-				conn.getData();
-				//CustomerUserGUI.main(new String[0]);
-				
-				// temporal variables
-				String firstName = jtfNameFirst.getText();
-				String lastName = jtfNameLast.getText();
-				String address = jtfAddress.getText();
-				String city = jtfCityName.getText();
-				String state = jtfStateName.getText();
-				String zipCode = jtfZIPcode.getText();
-				String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)";
-
-				PreparedStatement pst;
-				try {
-					pst = conn.prepareStatement(sql);
-					pst.setString(1, firstName);
-					pst.setString(2, lastName);
-					pst.setString(3, address);
-					pst.setString(4, city);
-					pst.setString(5, state);
-					pst.setString(6, zipCode);
-					int n = pst.executeUpdate();
-					if (n > 0) {
-						JOptionPane.showMessageDialog(null, "Saved");
-
-					}
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-
-			}
+		jbtSubmit.addActionListener(new NewCustomerAction(){
 			
 		});
 
 		// Create a button with text Cancel
 		JButton jbtCancel = new JButton("Cancel");
-		jbtCancel.addActionListener(null);
+		jbtCancel.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();	
+			}
+		});
 		jbtCancel.setHorizontalTextPosition(SwingConstants.RIGHT);
+		
 
 		panel.add(jlblNameFirst);// Add the label to the panel
 		panel.add(jtfNameFirst); // Add the text field to the panel
@@ -113,7 +82,17 @@ public class CustomerGUI extends JFrame {
 
 		panel.add(jbtSubmit); // Add the OK button to the panel
 		panel.add(jbtCancel); // Add the Cancel button to the panel
+	
+	}
 
+	protected static void action(int disposeOnClose, boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	protected static void actionPerformed() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	public static void main(String[] args) {

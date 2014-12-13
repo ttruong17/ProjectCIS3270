@@ -8,8 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import project.Customers;
 
-public class NewCustomerAction extends CustomerGUI implements ActionListener  {
+public class NewCustomerAction implements ActionListener  {
+	/*This creates an infinite loop, why? */
+	//CustomerGUI customer = new CustomerGUI();
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -17,7 +20,6 @@ public class NewCustomerAction extends CustomerGUI implements ActionListener  {
 
 		ConnectDB conn = new ConnectDB();
 		conn.getData();
-		CustomerUserGUI.main(new String[0]);
 		
 		// temporal variables
 		String firstName = jtfNameFirst.getText();
@@ -26,7 +28,7 @@ public class NewCustomerAction extends CustomerGUI implements ActionListener  {
 		String city = jtfCityName.getText();
 		String state = jtfStateName.getText();
 		String zipCode = jtfZIPcode.getText();
-		String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES('','','','','','')";
 
 		PreparedStatement pst;
 		try {
@@ -45,7 +47,7 @@ public class NewCustomerAction extends CustomerGUI implements ActionListener  {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
+		CustomerUserGUI.main(new String[0]);
 	}
 	
 	public static void main(String[] args) {
