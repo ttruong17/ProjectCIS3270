@@ -74,22 +74,13 @@ public class MainMenuGUI {
 				 				 
 			}
 			
-			private boolean checkIfCorrect(String input) {
-				boolean isCorrect = false;
-				String correctPass = {"java"};
-				checkIfCorrect(input); {
+			public void main(String input) {
 				
-				
-				if(input.length != correctPass.length) {
-					isCorrect = false;
-				} else {
-					isCorrect = Arrays.equals(input, correctPass);
-				}
-					Arrays.fill(correctPass, '0');
-					return isCorrect;
+			}
+			});
 			
-				}}});
-
+			
+				
 		
 		
 		
