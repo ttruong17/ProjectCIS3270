@@ -13,6 +13,7 @@ public class Customers {
 		String city;
 		String state;
 		long zipCode;
+		long ssn;
 
 		// create a non-arg constructor
 		Customer() {
@@ -22,7 +23,7 @@ public class Customers {
 		// create a constructor with args
 		Customer(String newFirstName, String newLastName, char newMiddleName,
 				long newStreetNum, String newStreetName, String newCity,
-				String newState, long newZipCode) {
+				String newState, long newZipCode, long newSSN) {
 
 			firstName = newFirstName;
 			lastName = newLastName;
@@ -32,6 +33,7 @@ public class Customers {
 			city = newCity;
 			state = newState;
 			zipCode = newZipCode;
+			ssn = newSSN;
 		}
 
 		/**
@@ -154,5 +156,12 @@ public class Customers {
 			this.zipCode = zipCode;
 		}
 
+		public long getSSN(long ssn){
+			return ssn;
+		}
+		
+		public void setSSN(long ssn){
+			this.ssn = ssn;
+		}
 	}
 }

@@ -1,70 +1,54 @@
 package project;
-
 import java.sql.*;
 
 public class ConnectDB {
-	
-	private Connection conn= null;
-	private Statement st;
-	private ResultSet rs;
-	
+
 	public ConnectDB() {
-		
-		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/newjava", "root", "password");
-			st =conn.createStatement();
-		}
-		catch( Exception ex){
-			System.out.println("error" + ex);
-		}
-	}
-	
-	
-	//retrieves records from data base and prints them out
-	public void getData(){
-		try{
-			
-			String query = "select * from customer";
-			rs = st.executeQuery(query);
-			System.out.println("records from database");
-			while(rs.next()){
-				String customerID = rs.getString("CustomerID");
-				String firstName = rs.getString("FirstName");
-				System.out.println("ID: " + customerID + " " + "name: " +firstName + " " );
-			}
-			
-		} catch(Exception ex){
-			System.out.println(ex);
-
-		}
-	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		// TODO Auto-generated constructor stub
 	}
 
-
-	public PreparedStatement (String sql) {
-		try{
-		PreparedStatement pst = conn.prepareStatement("INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)");
-
-		}
-		catch(Exception ex){
-			System.out.println(ex);
-
-		}
-		return pst;
-	}
-
-
+	/**
+	 * @param args
+	 * @return 
+	 * @return 
+	 * @return 
+	 */
+    public static void main (String a[]) throws ClassNotFoundException, SQLException
+    {
+        try
+        {
+            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=NightClub;integratedSecurity=true;";   
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Connection conn = DriverManager.getConnection(url);
+            System.out.println("connection created");
+            Statement st=conn.createStatement();
+            String sql="select * from Customer";
+            ResultSet rs=st.executeQuery(sql);
+            
+            //System.out.println(sql);
+            //print out CID and FirstName
+            //filter fields to print
+            while(rs.next())
+            {
+            	System.out.println("");
+                System.out.print("CustomerID: "+rs.getString(1));
+                System.out.print("FirstName : "+rs.getString(2));
+                //rs.insertRow();
+            }
+            if(st!=null)
+            st.close();
+            if(conn!=null)
+                conn.close();
+        }
+        catch(SQLException sqle1)
+        {
+            System.out.println("Sql exception "+sqle1);
+        }
+    }
+    
+    //this will connect to the database
 	public Connection connect() {
-	
 		return null;
 	}
-
-	
-	
 
 }
