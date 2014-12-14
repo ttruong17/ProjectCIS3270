@@ -3,6 +3,20 @@ import java.sql.*;
 
 public class ConnectDB {
 
+
+
+
+	public ConnectDB() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @param args
+	 * @return 
+	 * @return 
+	 * @return 
+	 */
+
     public static void main (String a[]) throws ClassNotFoundException, SQLException
     {
         try

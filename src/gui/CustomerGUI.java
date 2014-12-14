@@ -20,7 +20,7 @@ public class CustomerGUI extends JFrame {
 
 		// frame properties
 		frame.setTitle("New Customer Window");
-		frame.setSize(400, 400);
+		frame.setSize(400, 500);
 		frame.setLocation(200, 100);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setVisible(true);
@@ -42,7 +42,7 @@ public class CustomerGUI extends JFrame {
 		JLabel lblUserName = new JLabel();
 		JLabel lblPassword = new JLabel();
 		JLabel lblSecurityA = new JLabel();
-		JLabel lblSecurityQ = new JLabel();
+		JLabel lblSecurityQ = new JLabel("What's your favorite Color?");
 
 		JTextField tfUserName = new JTextField("Enter your username");
 		JTextField tfPassword = new JTextField("Enter your password");
@@ -55,7 +55,6 @@ public class CustomerGUI extends JFrame {
 
 		tfUserName.getText();
 		tfPassword.getText();
-		tfSecurityQ.getText();
 		tfSecurityA.getText();
 		
 
@@ -144,7 +143,6 @@ public class CustomerGUI extends JFrame {
 		panel.add(tfPassword);
 
 		panel.add(lblSecurityQ);
-		panel.add(tfSecurityQ);
 		panel.add(lblSecurityA);
 		panel.add(tfSecurityA);
 
