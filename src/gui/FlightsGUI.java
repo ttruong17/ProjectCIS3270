@@ -86,7 +86,7 @@ public class FlightsGUI {
 				//this panel displays the results from the database
 
 		//old panel 2 code
-	/*	JLabel lblDate1 = new JLabel();
+		JLabel lblDate1 = new JLabel();
 		lblDate1.setText("Departing Date:");
 		JLabel lblDate2 = new JLabel();
 		lblDate2.setText("Return Date");
@@ -102,7 +102,7 @@ public class FlightsGUI {
 
 		panel2.add(lblDate2);
 		panel2.add(txtDate2);
-	 */
+	 
 	
 	}
 
