@@ -42,11 +42,10 @@ public class CustomerGUI extends JFrame {
 		JLabel lblUserName = new JLabel();
 		JLabel lblPassword = new JLabel();
 		JLabel lblSecurityA = new JLabel();
+		JLabel disclaimer = new JLabel("Security question, to retrieve your password");
 		JLabel lblSecurityQ = new JLabel("What's your favorite Color?");
-
 		JTextField tfUserName = new JTextField("Enter your username");
 		JTextField tfPassword = new JTextField("Enter your password");
-		JTextField tfSecurityQ = new JTextField("What's your favorite Color?");
 		JTextField tfSecurityA = new JTextField("write your security answer");
 
 		lblUserName.setText("Choose user Name");
@@ -57,23 +56,23 @@ public class CustomerGUI extends JFrame {
 		tfPassword.getText();
 		tfSecurityA.getText();
 		
-
-
+		
 		// Create a text field with text "Type Name Here"
 	
-		final JTextField jtfNameFirst = new JTextField("Enter First Name");
-		final JTextField jtfNameLast = new JTextField("Enter Last Name");
-		final JTextField jtfAddress = new JTextField("Enter Address");
-		final JTextField jtfCityName = new JTextField("Enter City Name");
-		final JTextField jtfZIPcode = new JTextField("Enter ZIP Code");
-		final JTextField jtfSSN = new JTextField("Enter SSN");
+		final JTextField jtfNameFirst = new JTextField();
+		final JTextField jtfNameLast = new JTextField();
+		final JTextField jtfAddress = new JTextField();
+		final JTextField jtfCityName = new JTextField();
+		final JTextField jtfZIPcode = new JTextField();
+		final JTextField jtfSSN = new JTextField();
 
 		// Create a button with text continue
 		JButton jbtSubmit = new JButton("Continue");
 		jbtSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-
-				CustomerUserGUI.main(new String[0]);
+				
+				//linked to the old sign-up window
+				//CustomerUserGUI.main(new String[0]);
 				
 				try {
 		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
@@ -141,7 +140,7 @@ public class CustomerGUI extends JFrame {
 
 		panel.add(lblPassword);
 		panel.add(tfPassword);
-
+		panel.add(disclaimer);
 		panel.add(lblSecurityQ);
 		panel.add(lblSecurityA);
 		panel.add(tfSecurityA);
