@@ -3,22 +3,10 @@ import java.sql.*;
 
 public class ConnectDB {
 
-<<<<<<< HEAD
 
-	public void PreparedStatement (String sql) {
-		try{
-		PreparedStatement pst = conn.prepareStatement("INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)");
 
-		}
-		catch(Exception ex){
-			System.out.println(ex);
-
-		}
-		
-=======
 	public ConnectDB() {
 		// TODO Auto-generated constructor stub
->>>>>>> origin/master
 	}
 
 	/**
@@ -65,23 +53,5 @@ public class ConnectDB {
 		return null;
 	}
 
-<<<<<<< HEAD
 
-	public PreparedStatement preparedStatement(String sql) {
-		try{
-			PreparedStatement pst = conn.prepareStatement("INSERT INTO Customers(FirstName, LastName, Address, City, State, Zip_Code) VALUES(?,?,?,?,?,?)");
-
-			}
-			catch(Exception ex){
-				System.out.println(ex);
-
-			}
-		return null;
-	}
-
-	
-	
-
-=======
->>>>>>> origin/master
 }

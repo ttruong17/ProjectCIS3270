@@ -135,7 +135,7 @@ public class CustomerGUI extends JFrame {
 		frame.add(panel); // Add the panel to the frame
 
 		// Create a label with text "Enter your name: "
-		JLabel jlblCustomerID = new JLabel("First Name: ");
+	//	JLabel jlblCustomerID = new JLabel("First Name: ");
 		JLabel jlblNameFirst = new JLabel("First Name: ");
 		JLabel jlblNameLast = new JLabel("Last Name: ");
 		JLabel jlblAddress = new JLabel("Address: ");
@@ -146,7 +146,7 @@ public class CustomerGUI extends JFrame {
 
 
 		// Create a text field with text "Type Name Here"
-		final JTextField jtfCustomerID = new JTextField("Enter CustomerID");
+	//	final JTextField jtfCustomerID = new JTextField("Enter CustomerID");
 		final JTextField jtfNameFirst = new JTextField("Enter First Name");
 		final JTextField jtfNameLast = new JTextField("Enter Last Name");
 		final JTextField jtfAddress = new JTextField("Enter Address");
@@ -204,14 +204,14 @@ public class CustomerGUI extends JFrame {
 		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		            Connection conn = DriverManager.getConnection(url);
 					PreparedStatement pst;
-					String sql = "INSERT INTO Customer (CustomerID, FirstName, LastName, Street, City, ZipCode, SSN) VALUES(?,?,?,?,?,?,?)";
+					String sql = "INSERT INTO Customer1 (FirstName, LastName, Street, City, ZipCode, SSN) VALUES(?,?,?,?,?,?)";
 
 		            pst = conn.prepareStatement(sql);
 
 					//pst = cn.prepareStatement(sql);
 		            String zipCode = jtfZIPcode.getText();
 		            String ssn = jtfSSN.getText();
-					pst.setString(0, jtfCustomerID.getText());
+			//		pst.setString(0, jtfCustomerID.getText());
 					pst.setString(1, jtfNameFirst.getText());
 					pst.setString(2, jtfNameLast.getText());
 					pst.setString(3, jtfAddress.getText());
@@ -239,8 +239,8 @@ public class CustomerGUI extends JFrame {
 		jbtCancel.addActionListener(null);
 		jbtCancel.setHorizontalTextPosition(SwingConstants.RIGHT);
 		
-		panel.add(jlblCustomerID);// Add the label to the panel
-		panel.add(jtfCustomerID); // Add the text field to the panel
+//		panel.add(jlblCustomerID);// Add the label to the panel
+//		panel.add(jtfCustomerID); // Add the text field to the panel
 
 
 		panel.add(jlblNameFirst);// Add the label to the panel
