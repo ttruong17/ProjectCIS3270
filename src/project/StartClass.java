@@ -4,7 +4,7 @@ import gui.CustomerGUI;
 import gui.MainMenuGUI;
 import project.Customers;
 
-public class Test {
+public class StartClass {
 
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) throws InterruptedException {

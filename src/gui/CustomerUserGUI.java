@@ -7,7 +7,7 @@ import javax.swing.*;
 import project.Customers;
 
 public class CustomerUserGUI extends JFrame {
-
+/*
 	JFrame mainFrame = new JFrame();
 	JPanel mainPanel = new JPanel();
 	JPanel panel = new JPanel();
@@ -110,5 +110,6 @@ public class CustomerUserGUI extends JFrame {
 				new CustomerUserGUI();
 			}
 		});
-	}
+		}
+*/	
 }
