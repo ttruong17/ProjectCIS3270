@@ -44,10 +44,10 @@ public class CustomerGUI extends JFrame {
 		JLabel lblSecurityA = new JLabel();
 		JLabel lblSecurityQ = new JLabel("What's your favorite Color?");
 
-		JTextField tfUserName = new JTextField("Enter your username");
-		JTextField tfPassword = new JTextField("Enter your password");
+		final JTextField tfUserName = new JTextField("Enter your username");
+		final JTextField tfPassword = new JTextField("Enter your password");
 		JTextField tfSecurityQ = new JTextField("What's your favorite Color?");
-		JTextField tfSecurityA = new JTextField("write your security answer");
+		final JTextField tfSecurityA = new JTextField("write your security answer");
 
 		lblUserName.setText("Choose user Name");
 		lblPassword.setText("Choose your password");
@@ -80,7 +80,7 @@ public class CustomerGUI extends JFrame {
 		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		            Connection conn = DriverManager.getConnection(url);
 					PreparedStatement pst;
-					String sql = "INSERT INTO Customer1 (FirstName, LastName, Street, City, ZipCode, SSN) VALUES(?,?,?,?,?,?)";
+					String sql = "INSERT INTO Customer1 (FirstName, LastName, Street, City, ZipCode, SSN, UserName, Password, SecurityA) VALUES(?,?,?,?,?,?,?,?,?)";
 
 		            pst = conn.prepareStatement(sql);
 
@@ -93,7 +93,11 @@ public class CustomerGUI extends JFrame {
 					pst.setString(4, jtfCityName.getText());
 					pst.setLong(5, Long.parseLong(zipCode));
 					pst.setLong(6, Long.parseLong(ssn));
+					pst.setString(7, tfUserName.getText());
+					pst.setString(8, tfPassword.getText());
+					pst.setString(9, tfSecurityA.getText());
 
+					
 					int n = pst.executeUpdate();
 					if (n > 0) {
 						JOptionPane.showMessageDialog(null, "Saved");
