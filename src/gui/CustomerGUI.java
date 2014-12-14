@@ -44,17 +44,11 @@ public class CustomerGUI extends JFrame {
 		JLabel lblSecurityA = new JLabel();
 		JLabel disclaimer = new JLabel("Security question, to retrieve your password");
 		JLabel lblSecurityQ = new JLabel("What's your favorite Color?");
-<<<<<<< HEAD
+
 
 		final JTextField tfUserName = new JTextField("Enter your username");
 		final JTextField tfPassword = new JTextField("Enter your password");
-		JTextField tfSecurityQ = new JTextField("What's your favorite Color?");
 		final JTextField tfSecurityA = new JTextField("write your security answer");
-=======
-		JTextField tfUserName = new JTextField("Enter your username");
-		JTextField tfPassword = new JTextField("Enter your password");
-		JTextField tfSecurityA = new JTextField("write your security answer");
->>>>>>> f5c9e023b447a26581097b9eb981bdfd9ffd510e
 
 		lblUserName.setText("Choose user Name");
 		lblPassword.setText("Choose your password");

@@ -2,18 +2,10 @@ package project;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-import gui.MainMenuGUI;
 
 public class UserLogIn implements ActionListener {
 	public void actionPerformed(ActionEvent ae) {
-
+/*
 		ConnectDB conn = new ConnectDB();
 		
 		// temporal variables
@@ -57,5 +49,6 @@ public class UserLogIn implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
-
+*/
+	}
 }

@@ -16,7 +16,13 @@ import javax.swing.JOptionPane;
 import project.Customers;
 
 public class NewCustomerAction extends CustomerGUI implements ActionListener  {
-	/*This creates an infinite loop, why? */
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	/*
 	//CustomerGUI customer = new CustomerGUI();
 	
 	private static final long serialVersionUID = 1L;
@@ -71,5 +77,5 @@ public class NewCustomerAction extends CustomerGUI implements ActionListener  {
 	public static void main(String[] args) {
 
 	}
-
+*/
 }
