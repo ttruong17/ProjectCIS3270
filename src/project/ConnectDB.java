@@ -3,6 +3,7 @@ import java.sql.*;
 
 public class ConnectDB {
 
+<<<<<<< HEAD
 
 
 	public ConnectDB() {
@@ -15,6 +16,8 @@ public class ConnectDB {
 	 * @return 
 	 * @return 
 	 */
+=======
+>>>>>>> origin/master
     public static void main (String a[]) throws ClassNotFoundException, SQLException
     {
         try
@@ -47,11 +50,14 @@ public class ConnectDB {
             System.out.println("Sql exception "+sqle1);
         }
     }
+<<<<<<< HEAD
     
     //this will connect to the database
 	public Connection connect() {
 		return null;
 	}
 
+=======
+>>>>>>> origin/master
 
 }
