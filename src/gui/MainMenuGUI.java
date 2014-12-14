@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 
@@ -53,10 +55,10 @@ public class MainMenuGUI {
 		jlblPassword.setText("Password");
 
 		final JTextField jtfUserName = new JTextField("Enter User Name");
-		final JPasswordField jtfPassword = new JPasswordField("Enter Password");
+		final JTextField jtfPassword = new JTextField("Enter Password");
 		jtfUserName.getText();
 		
-		final String userName = jtfUserName.getText();
+		final String userName = jtfUserName.toString();
 		final String password = jtfPassword.toString();
 		
 		panel1.add(jlblUserName);
@@ -71,9 +73,49 @@ public class MainMenuGUI {
 		JButton jbtSubmit = new JButton("Log-in");
 		jbtSubmit.addActionListener(new ActionListener() {
 			
-			public void actionPerformed(ActionEvent e){
+			
+			public void actionPerformed(ActionEvent ae) {
+				
+				//linked to the old sign-up window
+				//CustomerUserGUI.main(new String[0]);
+				
+				try {
+		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		            Connection conn = DriverManager.getConnection(url);
+					PreparedStatement pst;
+					String sql = "Select UserName FROM CUSTOMER1 WHERE UserName=? AND Password=?";
+
+		            pst = conn.prepareStatement(sql);
+		            
+					pst.setString(1, jtfUserName.getText());
+					pst.setString(2, jtfPassword.getText());
+					ResultSet rs;
+					rs = pst.executeQuery();
+					
+					//if FALSE new user window popup else continue to Flight Screen
+					if(rs.next()== false){
+					JOptionPane.showMessageDialog(null, "No User Found. Check UserName and Password! If New User, Sign Up!");
+					CustomerGUI obj = new CustomerGUI ();
+					obj.setVisible(true);
+
+					}
+					
+					else {
+						FlightsGUI obj = new FlightsGUI ();
+						obj.setVisible(true);
+					}
+					
+					//int n = pst.executeUpdate();
+					//if (n > 0) {
+//
+				//	}
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+
 			}
-			});
+		});
 		
 		// Create a button with text Exit
 		// will exit the application

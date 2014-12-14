@@ -21,12 +21,13 @@ public class ConnectDB {
     {
         try
         {
-            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=NightClub;integratedSecurity=true;";   
+        	String x = "'deltaflyer'";
+            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection conn = DriverManager.getConnection(url);
             System.out.println("connection created");
             Statement st=conn.createStatement();
-            String sql="select * from Customer";
+            String sql="select * from Customer1 WHERE UserName=" +x;
             ResultSet rs=st.executeQuery(sql);
             
             //System.out.println(sql);

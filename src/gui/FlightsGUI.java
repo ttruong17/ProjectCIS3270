@@ -18,7 +18,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 
-public class FlightsGUI {
+public class FlightsGUI extends JFrame {
 
 	JFrame frame1 = new JFrame();
 	JPanel mainPanel = new JPanel();
