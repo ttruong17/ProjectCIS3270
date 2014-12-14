@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.logging.Logger;
 import javax.swing.*;
+
 import project.ConnectDB;
 
 public class CustomerGUI extends JFrame {
@@ -38,6 +39,25 @@ public class CustomerGUI extends JFrame {
 		JLabel jlblCityName = new JLabel("City Name: ");
 		JLabel jlblZIP = new JLabel("ZIP Code: ");
 		JLabel jlblSSN = new JLabel("SSN: ");
+		JLabel lblUserName = new JLabel();
+		JLabel lblPassword = new JLabel();
+		JLabel lblSecurityA = new JLabel();
+		JLabel lblSecurityQ = new JLabel();
+
+		JTextField tfUserName = new JTextField("Enter your username");
+		JTextField tfPassword = new JTextField("Enter your password");
+		JTextField tfSecurityQ = new JTextField("What's your favorite Color?");
+		JTextField tfSecurityA = new JTextField("write your security answer");
+
+		lblUserName.setText("Choose user Name");
+		lblPassword.setText("Choose your password");
+		lblSecurityA.setText("Answer goes here");
+
+		tfUserName.getText();
+		tfPassword.getText();
+		tfSecurityQ.getText();
+		tfSecurityA.getText();
+		
 
 
 		// Create a text field with text "Type Name Here"
@@ -116,6 +136,17 @@ public class CustomerGUI extends JFrame {
 		
 		panel.add(jlblSSN);
 		panel.add(jtfSSN);
+		
+		panel.add(lblUserName);
+		panel.add(tfUserName);
+
+		panel.add(lblPassword);
+		panel.add(tfPassword);
+
+		panel.add(lblSecurityQ);
+		panel.add(tfSecurityQ);
+		panel.add(lblSecurityA);
+		panel.add(tfSecurityA);
 
 		
 

@@ -103,7 +103,6 @@ public class FlightsGUI {
 		panel2.add(lblDate2);
 		panel2.add(txtDate2);
 	 
-	
 	}
 
 	public static void main(String[] args) {
