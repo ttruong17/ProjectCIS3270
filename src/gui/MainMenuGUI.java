@@ -72,45 +72,7 @@ public class MainMenuGUI {
 		jbtSubmit.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e){
-						
-				final String dbName = "newjava";
-				//check for driver
-				 try {
-				 
-				 Class.forName("com.mysql.jdbc.Driver");
-				 
-				 } catch (ClassNotFoundException ex) {
-				 ex.printStackTrace();
-				 }
-				 
-				 Connection connection = null;
-				 //initiate connection
-				 try {
-				 connection = DriverManager
-				 .getConnection("jdbc:mysql://localhost:3306/" + dbName,
-				 userName, password);
-				 
-				 } catch (SQLException ex) {
-				 ex.printStackTrace();
-				 }
-				 //test connection
-				 if (connection != null) {
-				 System.out.println("Successfullly connected to MySQL DB");
-				 try{
-						CustomerGUI.main(new String[0]);
-						//hides the current frame
-						//buggy
-						//frame1.hide();
-						
-					}
-					catch (Exception ex){
-						ex.printStackTrace();
-					}
-				 } else {
-				 System.out.println("Failed to connect to MySQL DB");
-				 }
-				 
-				}
+			}
 			});
 		
 		// Create a button with text Exit
