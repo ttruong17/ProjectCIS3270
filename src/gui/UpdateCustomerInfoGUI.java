@@ -4,6 +4,11 @@ import java.awt.Font;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.*;
 
@@ -17,6 +22,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 	JPanel panel1 = new JPanel();
 	JPanel panel2 = new JPanel();
 	JPanel panel3 = new JPanel();
+
 
 	public UpdateCustomerInfoGUI() {
 
@@ -41,6 +47,30 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		title.setFont(new Font("verdana", Font.PLAIN, 18));
 		panel.add(title);
 		
+		JLabel updateFirstName = new JLabel();
+		updateFirstName.setText("FirstName");
+		final JTextField updateFirstName1 = new JTextField();
+		//updateFirstName1.setText(" New Address ");
+		
+		JLabel updateLastName = new JLabel();
+		updateLastName.setText("LastName");
+		final JTextField updateLastName1 = new JTextField();
+		//updateFirstName1.setText(" New Address ");
+
+		JLabel updateAddress = new JLabel();
+		updateAddress.setText("Address");
+		final JTextField updateAddress1 = new JTextField();
+		//updateAddress1.setText(" New Address ");
+
+		JLabel updateCity = new JLabel (); 
+		updateCity.setText("City");
+		final JTextField updateCity1 = new JTextField();
+		//updateCity1.setText("New City");
+
+		JLabel updateZipCode = new JLabel();
+		updateZipCode.setText("ZIP Code");
+		final JTextField updateZipCode1 = new JTextField();
+		//updateZipCode1.setText("New ZIP Code");
 
 		//update menu
 		// disclaimer
@@ -49,16 +79,68 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		updateTitle.setText("Update customer info");
 		
 		JLabel disclaimer = new JLabel();
-		disclaimer.setText("To delete a customer type the customer ID and name.");
+		final JTextField disclaimer1 = new JTextField();
+		disclaimer.setText("To delete a customer type the customer ID.");
+		
+		//add disclaimer textfield
 		
 		panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
 		panel1.add(updateTitle);
 		panel1.add(disclaimer);
 		
 		//show customer to be changed info
-			
+		
+		//this actionevent will search for customer where customerID = disclaimer
+		//need this to show existing customer info in fields
+		JButton jbtEnterDisclaimer = new JButton("OK");
+		jbtEnterDisclaimer.addActionListener(new ActionListener(){
 
-		//labels to add new customer information
+		public void actionPerformed(ActionEvent ae) {
+			
+			//linked to the old sign-up window
+			//CustomerUserGUI.main(new String[0]);
+			
+			try {
+	            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+	            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	            Connection conn = DriverManager.getConnection(url);
+				PreparedStatement pst;
+				String sql = "Select FirstName, LastName, Street, City, ZipCode FROM CUSTOMER1 WHERE CustomerID=?";
+
+	            pst = conn.prepareStatement(sql);
+	            
+				pst.setString(1, disclaimer1.getText());
+				ResultSet rs;
+				rs = pst.executeQuery();
+				
+				//loops through rows where CustomerID=disclaimer1
+				if(rs.next()){
+					updateFirstName1.setText(rs.getString("FirstName"));
+					updateLastName1.setText(rs.getString("LastName"));
+					updateAddress1.setText(rs.getString("Street"));
+					updateCity1.setText(rs.getString("City"));
+					updateZipCode1.setText(rs.getString("ZipCode"));
+
+				}
+				else{
+					updateFirstName1.setText(null);
+					updateLastName1.setText(null);
+					updateAddress1.setText(null);
+					updateCity1.setText(null);
+					updateZipCode1.setText(null);
+					
+					JOptionPane.showMessageDialog(null,"No Customer Found.");
+				}
+				
+			} catch (SQLException | ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+
+		}
+	});
+
+
+	/*	//labels to add new customer information
 
 		JLabel updateAddress = new JLabel();
 		updateAddress.setText("Address");
@@ -78,7 +160,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		JLabel updateZipCode = new JLabel();
 		updateZipCode.setText("ZIP Code");
 		JTextField updateZipCode1 = new JTextField();
-		updateZipCode1.setText("New ZIP Code");
+		updateZipCode1.setText("New ZIP Code");*/
 
 		panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
 		panel2.add(updateAddress);
@@ -86,9 +168,6 @@ public class UpdateCustomerInfoGUI extends JFrame {
 
 		panel2.add(updateCity);
 		panel2.add(updateCity1);
-
-		panel2.add(updateState);
-		panel2.add(updateState1);
 
 		panel2.add(updateZipCode);
 		panel2.add(updateZipCode1);
@@ -108,19 +187,71 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		JButton jbtUpdate = new JButton("Update");
 		jbtUpdate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-			//code or reference to the class where it contains the prepared sql statement
-				//and the code to update the database records. 
+					
+					//linked to the old sign-up window
+					//CustomerUserGUI.main(new String[0]);
+					
+					try {
+			            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+			            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			            Connection conn = DriverManager.getConnection(url);
+						PreparedStatement pst;
+						String sql = "Update Customer1 SET FirstName=?, LastName=?, Street=?, City=?, ZipCode=? WHERE CustomerID=?";
+
+			            pst = conn.prepareStatement(sql);
+
+						pst.setString(1, updateFirstName1.getText());
+						pst.setString(2, updateLastName1.getText());
+						pst.setString(3, updateAddress1.getText());
+						pst.setString(4, updateCity1.getText());
+						pst.setString(5, updateZipCode1.getText());
+						pst.setString(6, disclaimer1.getText());
+
+						
+						int n = pst.executeUpdate();
+						if (n > 0) {
+							JOptionPane.showMessageDialog(null, "Updated Successfully.");
+
+						}
+					} catch (SQLException | ClassNotFoundException ae) {
+						ae.printStackTrace();
+					}
+
+				}
+			});
 				
-			}
-		});
 		
 		//delete customer 
 		JButton jbtDelete = new JButton("Delete");
 		jbtUpdate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-			//code or reference to the class where it contains the prepared sql statement
-				//and the code to delete the database records. 
 				
+				//linked to the old sign-up window
+				//CustomerUserGUI.main(new String[0]);
+				
+				try {
+		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		            Connection conn = DriverManager.getConnection(url);
+					PreparedStatement pst;
+					String sql = "Delete From Customer1 WHERE CustomerID=?";
+
+		            pst = conn.prepareStatement(sql);
+
+					pst.setString(1, disclaimer1.getText());
+					
+					int n = pst.executeUpdate();
+					if (n > 0) {
+						JOptionPane.showMessageDialog(null, "Deleted Record.");
+
+					}
+					else
+						JOptionPane.showMessageDialog(null, "Already Deleted or Record Does Not Exist.");
+					
+				} catch (SQLException | ClassNotFoundException ae) {
+					ae.printStackTrace();
+				}
+
 			}
 		});
 

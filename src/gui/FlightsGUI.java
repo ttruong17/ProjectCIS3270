@@ -3,6 +3,12 @@ package gui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -65,8 +71,8 @@ public class FlightsGUI extends JFrame {
 		JLabel jlblDestination = new JLabel();
 		jlblDestination.setText("Destination");
 
-		JTextField jtfOrigin = new JTextField(" Flying From: ");
-		JTextField jtfDestination = new JTextField(" Flying To: ");
+		final JTextField jtfOrigin = new JTextField(" Flying From: ");
+		final JTextField jtfDestination = new JTextField(" Flying To: ");
 
 		panel1.add(jlblOrigin);
 		panel1.add(jtfOrigin);
@@ -133,16 +139,70 @@ public class FlightsGUI extends JFrame {
 		JButton jbtSearch = new JButton("Search");
 		jbtSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
+
+				//linked to the old sign-up window
+				//CustomerUserGUI.main(new String[0]);
+
 				try {
-					/*
-					// code must link to database to search for flights
-				*/
-				} catch (Exception e) {
+					String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+					Connection conn = DriverManager.getConnection(url);
+					PreparedStatement pst;
+					
+					//search by Origin
+					if(jtfOrigin.getText() != null){
+						String sql = "Select * FROM FLight1 WHERE Origin=?";
+						pst = conn.prepareStatement(sql);
+
+						pst.setString(1, jtfOrigin.getText());
+						ResultSet rs;
+						rs = pst.executeQuery();
+
+						//if FALSE new user window popup else continue to Flight Screen
+						if(rs.next()== false){
+							JOptionPane.showMessageDialog(null, "No Flights.");
+						}
+
+					}
+					//Search by Destination
+					else if(jtfDestination.getText() != null){
+						String sql = "Select * FROM FLight1 WHERE Origin=?";
+						pst = conn.prepareStatement(sql);
+
+						pst.setString(1, jtfDestination.getText());
+						ResultSet rs;
+						rs = pst.executeQuery();
+
+						//if FALSE new user window popup else continue to Flight Screen
+						if(rs.next()== false){
+							JOptionPane.showMessageDialog(null, "No Flights.");
+
+						}
+					}
+					//Search by Both
+					else {
+						String sql = "Select * FROM Flight1 WHERE Origin=? AND Destination=?";
+
+						pst = conn.prepareStatement(sql);
+
+						pst.setString(1, jtfOrigin.getText());
+						pst.setString(2, jtfDestination.getText());
+						ResultSet rs;
+						rs = pst.executeQuery();
+
+						//if FALSE new user window popup else continue to Flight Screen
+						if(rs.next()== false){
+							JOptionPane.showMessageDialog(null, "No Flights.");
+						}
+					}
+					
+					
+				} catch (SQLException | ClassNotFoundException e) {
 					e.printStackTrace();
 				}
+
 			}
 		});
-
 		// add the buttons to the panel
 		panel3.add(jbtSearch);
 

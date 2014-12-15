@@ -106,10 +106,6 @@ public class MainMenuGUI {
 						obj.setVisible(true);
 					}
 					
-					//int n = pst.executeUpdate();
-					//if (n > 0) {
-//
-				//	}
 				} catch (SQLException | ClassNotFoundException e) {
 					e.printStackTrace();
 				}
