@@ -3,6 +3,11 @@ package gui;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.*;
 
@@ -18,9 +23,9 @@ public class RecoverPasswordGUI extends JFrame {
 		// frame properties
 		frame.add(mainPanel);
 		frame.setTitle("Recover Password Window");
-		frame.setSize(400, 300);
+		frame.setSize(300, 300);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setLocation(500, 60);
+		frame.setLocation(500, 100);
 		frame.setVisible(true);
 
 		// adds the ability to have more than one panel in the main panel
@@ -36,16 +41,60 @@ public class RecoverPasswordGUI extends JFrame {
 		panel1.add(jlblWelcome);
 
 		// panel two code
-		JLabel jlblSecurityQ = new JLabel("Your security question ");
-		JTextField jtfSecurityQ = new JTextField("Your security ans goes here");
+		JLabel jlblUserName = new JLabel("UserName: ");
+		final JTextField jtfUserName = new JTextField("Enter your UserName");
+
+		JLabel jlblSecurityQ = new JLabel("What is your favorite color?");
+		final JTextField jtfSecurityA = new JTextField("Your security ans goes here");
+
+		panel2.add(jlblUserName);
+		panel2.add(jtfUserName);
 
 		panel2.add(jlblSecurityQ);
-		panel2.add(jtfSecurityQ);
-
+		panel2.add(jtfSecurityA);
+		
 		// Create a button with text Submit
 		JButton jbtSubmit = new JButton("Submit");
-		jbtSubmit.addActionListener(null);
+		jbtSubmit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae) {
+				
+				//linked to the old sign-up window
+				//CustomerUserGUI.main(new String[0]);
+				
+				try {
+		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		            Connection conn = DriverManager.getConnection(url);
+					PreparedStatement pst;
+					String sql = "Select Password FROM CUSTOMER1 WHERE UserName=? AND SecurityA=?";
 
+		            pst = conn.prepareStatement(sql);
+		            
+					pst.setString(1, jtfUserName.getText());
+					pst.setString(2, jtfSecurityA.getText());
+					ResultSet rs;
+					rs = pst.executeQuery();
+					
+					//if FALSE new user window popup else continue to Flight Screen
+					if(rs.next()== false){
+					JOptionPane.showMessageDialog(null, "Security Answer is incorrect. Please contact System Admin.");
+
+					}
+					
+					else {
+						JOptionPane.showMessageDialog(null,"Password: " +rs.getString("Password"));
+						MainMenuGUI obj = new MainMenuGUI ();
+						//obj.setVisible(true);
+						
+						frame.dispose();
+					}
+					
+				} catch (SQLException | ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+
+			}
+		});
 		// Create a button with text Cancel
 		JButton jbtCancel = new JButton("Cancel");
 		jbtCancel.addActionListener(new ActionListener() {

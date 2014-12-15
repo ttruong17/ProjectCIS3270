@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 import javax.swing.*;
 import javax.swing.*;
-public class MainMenuGUI {
+public class MainMenuGUI extends JFrame {
 
 	JFrame frame1 = new JFrame();
 	JPanel mainPanel = new JPanel();
@@ -96,8 +96,8 @@ public class MainMenuGUI {
 					//if FALSE new user window popup else continue to Flight Screen
 					if(rs.next()== false){
 					JOptionPane.showMessageDialog(null, "No User Found. Check UserName and Password! If New User, Sign Up!");
-					CustomerGUI obj = new CustomerGUI ();
-					obj.setVisible(true);
+					//CustomerGUI obj = new CustomerGUI ();
+					//obj.setVisible(true);
 
 					}
 					

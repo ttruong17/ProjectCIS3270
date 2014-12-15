@@ -115,7 +115,7 @@ public class FlightsGUI extends JFrame {
 		panel3.add(availableHours);
 
 		// get the selected item:
-		String selectedHour = (String) availableHours.getSelectedItem();
+		final String selectedHour = (String) availableHours.getSelectedItem();
 
 		// select minutes
 		String[] mins = new String[] { "00", "30" };
@@ -124,7 +124,7 @@ public class FlightsGUI extends JFrame {
 		// add to panel
 		panel3.add(availableMins);
 		// get selected item
-		String selectedMins = (String) availableMins.getSelectedItem();
+		final String selectedMins = (String) availableMins.getSelectedItem();
 
 		// select am or pm
 		String[] day = new String[] { "AM", "PM" };
@@ -133,7 +133,7 @@ public class FlightsGUI extends JFrame {
 		// add to panel
 		panel3.add(availableDay);
 		// get selected item
-		String selectedDay = (String) availableDay.getSelectedItem();
+		final String selectedDay = (String) availableDay.getSelectedItem();
 
 		// Create a button with text Search
 		JButton jbtSearch = new JButton("Search");
@@ -166,7 +166,7 @@ public class FlightsGUI extends JFrame {
 					}
 					//Search by Destination
 					else if(jtfDestination.getText() != null){
-						String sql = "Select * FROM FLight1 WHERE Origin=?";
+						String sql = "Select * FROM FLight1 WHERE Destination=?";
 						pst = conn.prepareStatement(sql);
 
 						pst.setString(1, jtfDestination.getText());
@@ -179,8 +179,8 @@ public class FlightsGUI extends JFrame {
 
 						}
 					}
-					//Search by Both
-					else {
+					//Search by Destination and Origin
+					else if(jtfDestination.getText() != null && jtfOrigin.getText() != null) {
 						String sql = "Select * FROM Flight1 WHERE Origin=? AND Destination=?";
 
 						pst = conn.prepareStatement(sql);
@@ -195,7 +195,45 @@ public class FlightsGUI extends JFrame {
 							JOptionPane.showMessageDialog(null, "No Flights.");
 						}
 					}
-					
+					//Search Origin Departure
+					else if (selectedHour != null && selectedMins != null && selectedDay != null) {
+						String sql = "Select * FROM Flight1 WHERE OriginHour=? AND OriginMin=? AND OriginAMPM=?";
+
+						pst = conn.prepareStatement(sql);
+
+						pst.setString(1, selectedHour);
+						pst.setString(2, selectedMins);
+						pst.setString(3, selectedDay);
+
+						ResultSet rs;
+						rs = pst.executeQuery();
+
+						//if FALSE new user window popup else continue to Flight Screen
+						if(rs.next()== false){
+							JOptionPane.showMessageDialog(null, "No Flights.");
+						}
+					}
+					//search by ALL
+					else{
+						String sql = "Select * FROM Flight1 WHERE Origin=? AND Destination=? AND OriginHour=? AND OriginMin=? AND OriginAMPM=?";
+
+						pst = conn.prepareStatement(sql);
+						pst.setString(1, jtfOrigin.getText());
+						pst.setString(2, jtfDestination.getText());
+						pst.setString(3, selectedHour);
+						pst.setString(4, selectedMins);
+						pst.setString(5, selectedDay);
+
+						ResultSet rs;
+						rs = pst.executeQuery();
+
+						//if FALSE new user window popup else continue to Flight Screen
+						if(rs.next()== false){
+							JOptionPane.showMessageDialog(null, "No Flights.");
+						}
+					}
+
+
 					
 				} catch (SQLException | ClassNotFoundException e) {
 					e.printStackTrace();
