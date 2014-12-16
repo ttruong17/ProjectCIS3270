@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,7 +53,7 @@ public class FlightsGUI extends JFrame {
 		mainPanel.add(panel1);
 		mainPanel.add(panel2);
 		mainPanel.add(panel3);
-		mainPanel.add(panel4);
+		mainPanel.add(panel4,BorderLayout.class);
 
 		// panel code - welcome message
 		JLabel jlblWelcome = new JLabel();
@@ -248,13 +249,102 @@ public class FlightsGUI extends JFrame {
 		// should only visible if admin logs in
 
 		JLabel adminMessage = new JLabel();
-		adminMessage
-				.setText("Admin Menu: Here you can update customer information.");
-		JLabel adminMessage2 = new JLabel();
-		adminMessage2.setText("You can also add, delete and modify Flights");
-		panel4.add(adminMessage);
-		panel4.add(adminMessage2);
+		adminMessage.setText("Admin Menu");
+		
+		panel4.add(adminMessage,BorderLayout.NORTH);
+		
+		JButton updateC = new JButton ();
+		updateC.setText("Update Customer");
+		panel4.add(updateC,BorderLayout.SOUTH);
+		updateC.addActionListener(new ActionListener(){
 
+			public void actionPerformed(ActionEvent arg0) {
+			//code brings up the update customer window
+				try{
+					UpdateCustomerGUI.main(new String[0]);
+					
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+);
+		
+		JButton deleteC = new JButton ();
+		deleteC.setText("Delete Customer");
+		panel4.add(deleteC,BorderLayout.SOUTH);
+		deleteC.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+			//code brings up the update customer window
+				try{
+					DeleteCustomerGUI.main(new String[0]);
+					
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+);
+		
+		JButton updateF = new JButton ();
+		updateF.setText("Update Flight");
+		panel4.add(updateF,BorderLayout.SOUTH);
+		updateF.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+			//code brings up the update customer window
+				try{
+					UpdateFlightsGUI.main(new String[0]);
+					
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+);
+		
+		JButton deleteF = new JButton ();
+		deleteF.setText("Delete Flight");
+		panel4.add(deleteF,BorderLayout.SOUTH);
+		deleteF.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+			//code brings up the update customer window
+				try{
+					DeleteFlightGUI.main(new String[0]);
+					
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+);
+		
+		
+		JButton deleteCF = new JButton ();
+		deleteCF.setText("Delete Customer Booked Flight");
+		panel4.add(deleteCF,BorderLayout.SOUTH);
+		deleteF.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent arg0) {
+			//code brings up the update customer window
+				try{
+					ChangeReservationGUI.main(new String[0]);
+					
+				}
+				catch (Exception e){
+					e.printStackTrace();
+				}
+			}
+		}
+);
+	
+		
 	}
 
 	public static void main(String[] args) {

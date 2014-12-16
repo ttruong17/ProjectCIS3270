@@ -37,7 +37,7 @@ public class DeleteFlightGUI extends JFrame {
 
 		//title visible to the admin
 		JLabel title = new JLabel();
-		title.setText("Update fligth Info");
+		title.setText("Delete Flight");
 		title.setFont(new Font("verdana", Font.PLAIN, 18));
 		panel.add(title);
 		panel1.setSize(new Dimension(50,50));

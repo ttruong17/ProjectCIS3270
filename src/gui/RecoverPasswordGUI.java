@@ -28,7 +28,6 @@ public class RecoverPasswordGUI extends JFrame {
 		frame.setLocation(500, 100);
 		frame.setVisible(true);
 
-		// adds the ability to have more than one panel in the main panel
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
 		mainPanel.add(panel1);
@@ -41,11 +40,12 @@ public class RecoverPasswordGUI extends JFrame {
 		panel1.add(jlblWelcome);
 
 		// panel two code
+		panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
 		JLabel jlblUserName = new JLabel("UserName: ");
-		final JTextField jtfUserName = new JTextField("Enter your UserName");
+		final JTextField jtfUserName = new JTextField("");
 
 		JLabel jlblSecurityQ = new JLabel("What is your favorite color?");
-		final JTextField jtfSecurityA = new JTextField("Your security ans goes here");
+		final JTextField jtfSecurityA = new JTextField("");
 
 		panel2.add(jlblUserName);
 		panel2.add(jtfUserName);
@@ -103,9 +103,20 @@ public class RecoverPasswordGUI extends JFrame {
 				frame.dispose();
 			}
 		});
-
+		
+		//create the done button
+		JButton done = new JButton();
+		done.setText("Done");
+		done.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		
 		panel3.add(jbtSubmit); // Add the OK button to the panel
 		panel3.add(jbtCancel); // Add the Cancel button to the panel
+		panel3.add(done);
 	}
 
 	public static void main(String[] args) {

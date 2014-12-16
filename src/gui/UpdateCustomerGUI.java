@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 import javax.swing.*;
 
-public class UpdateCustomerInfoGUI extends JFrame {
+public class UpdateCustomerGUI extends JFrame {
 
 	private static final long serialVersionUID = 1267588182839853118L;
 
@@ -24,7 +24,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 	JPanel panel3 = new JPanel();
 
 
-	public UpdateCustomerInfoGUI() {
+	public UpdateCustomerGUI() {
 
 		//frame properties
 		frame1.setTitle("Admin - Update Window");
@@ -43,7 +43,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 
 		//title visible to the admin
 		JLabel title = new JLabel();
-		title.setText("Update and Delete customer Info");
+		title.setText("Update customer Info");
 		title.setFont(new Font("verdana", Font.PLAIN, 18));
 		panel.add(title);
 		
@@ -80,7 +80,7 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		
 		JLabel disclaimer = new JLabel();
 		final JTextField disclaimer1 = new JTextField();
-		disclaimer.setText("To delete a customer type the customer ID.");
+		disclaimer.setText(" ");
 		
 		//add disclaimer textfield
 		
@@ -188,9 +188,6 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		jbtUpdate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 					
-					//linked to the old sign-up window
-					//CustomerUserGUI.main(new String[0]);
-					
 					try {
 			            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
 			            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -226,9 +223,6 @@ public class UpdateCustomerInfoGUI extends JFrame {
 		jbtUpdate.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				
-				//linked to the old sign-up window
-				//CustomerUserGUI.main(new String[0]);
-				
 				try {
 		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
 		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -254,19 +248,30 @@ public class UpdateCustomerInfoGUI extends JFrame {
 
 			}
 		});
-
+		
+		//create the done button
+		JButton done = new JButton();
+		done.setText("Done");
+		done.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame1.dispose();
+			}
+		});
+		
+		
 		//panel 3 properties
 		panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
 		panel3.add(jbtUpdate);
 		panel3.add(jbtCancel);
-		panel3.add(jbtDelete);
-		
+		//panel3.add(jbtDelete);
+		panel3.add(done);
 	}
 
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new UpdateCustomerInfoGUI();
+				new UpdateCustomerGUI();
 			}
 		});
 	}

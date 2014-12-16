@@ -115,11 +115,22 @@ public class UpdateFlightsGUI extends JFrame {
 			}
 		});
 	
+		JButton done = new JButton();
+		done.setText("Done");
+		done.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame1.dispose();
+			}
+		});
+		
 		//panel 3 properties
 		// this is where the update button and cancel button reside
 		panel3.setLayout(new BoxLayout(panel3, BoxLayout.X_AXIS));
 		panel3.add(jbtUpdate);
 		panel3.add(jbtCancel);
+		panel3.add(done);
+		
 		
 	}
 
