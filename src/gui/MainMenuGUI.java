@@ -96,8 +96,10 @@ public class MainMenuGUI extends JFrame {
 					//if FALSE new user window popup else continue to Flight Screen
 					if(rs.next()== false){
 					JOptionPane.showMessageDialog(null, "No User Found. Check UserName and Password! If New User, Sign Up!");
-					//CustomerGUI obj = new CustomerGUI ();
+					
 					//obj.setVisible(true);
+					
+					
 
 					}
 					
