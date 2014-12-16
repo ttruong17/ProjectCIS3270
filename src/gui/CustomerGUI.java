@@ -103,7 +103,7 @@ public class CustomerGUI extends JFrame {
 				} catch (SQLException | ClassNotFoundException e) {
 					e.printStackTrace();
 				}
-
+				frame.dispose();
 			}
 		});
 
