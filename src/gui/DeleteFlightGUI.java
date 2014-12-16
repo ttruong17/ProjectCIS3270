@@ -4,6 +4,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.swing.*;
 
@@ -54,7 +58,7 @@ public class DeleteFlightGUI extends JFrame {
 		//labels to add new customer information
 		JLabel flightID = new JLabel();
 		flightID.setText("Flight ID");
-		JTextField flightID1 = new JTextField();
+		final JTextField flightID1 = new JTextField();
 		flightID1.getText();
 		
 
@@ -88,11 +92,33 @@ public class DeleteFlightGUI extends JFrame {
 		JButton jbtUpdate = new JButton("Delete");
 		jbtUpdate.addActionListener( new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				//code or reference to the class where it contains the prepared sql statement
-				//and the code to update the database records. 
-								
+
+				try {
+					String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";
+					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+					Connection conn = DriverManager.getConnection(url);
+					PreparedStatement pst;
+					//String sql = "Select FligDelete From Flight1 WHERE Flight1.FlightID=?"; 
+					String sql = "Delete From Flight1 WHERE Flight1.FlightID=?";
+
+					pst = conn.prepareStatement(sql);
+					pst.setString(1, flightID1.getText());
+					//pst.setString(2, flightID1.getText());
+
+					//pst = conn.prepareStatement(sql1);
+					//pst.setString(1, flightID1.getText());
+
+					int n = pst.executeUpdate();
+					if (n > 0) {
+						JOptionPane.showMessageDialog(null,
+								"Deleted Successfully.");
+
+					}
+				} catch (SQLException | ClassNotFoundException ae) {
+					ae.printStackTrace();
+				}
+
 			}
 		});
 	

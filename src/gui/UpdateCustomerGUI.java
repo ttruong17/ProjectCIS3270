@@ -50,8 +50,13 @@ public class UpdateCustomerGUI extends JFrame {
 		// customer ID
 		JLabel customerID = new JLabel();
 		customerID.setText("CustomerID");
+<<<<<<< HEAD
 		final JTextField customerID1 = new JTextField();	
 		
+=======
+		final JTextField customerID1 = new JTextField();
+				
+>>>>>>> origin/master
 		// customer address
 		JLabel updateAddress = new JLabel();
 		updateAddress.setText("Address");
@@ -77,16 +82,15 @@ public class UpdateCustomerGUI extends JFrame {
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 					Connection conn = DriverManager.getConnection(url);
 					PreparedStatement pst;
-					String sql = "Update Customer1 SET FirstName=?, LastName=?, Street=?, City=?, ZipCode=? WHERE CustomerID=?";
+					String sql = "Update Customer1 SET Street=?, City=?, ZipCode=? WHERE CustomerID=?";
 
 					pst = conn.prepareStatement(sql);
 
-					pst.setString(1, customerID1.getText());
-					pst.setString(2, firstName1.getText());
-					pst.setString(3, lastName1.getText());
-					pst.setString(4, updateAddress1.getText());
-					pst.setString(5, updateCity1.getText());
-					pst.setString(6, updateZipCode1.getText());
+					pst.setString(1, updateAddress1.getText());
+					pst.setString(2, updateCity1.getText());
+					pst.setString(3, updateZipCode1.getText());
+					pst.setString(4, customerID1.getText());
+
 
 					int n = pst.executeUpdate();
 					if (n > 0) {
