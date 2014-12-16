@@ -23,7 +23,7 @@ public class RecoverPasswordGUI extends JFrame {
 		// frame properties
 		frame.add(mainPanel);
 		frame.setTitle("Recover Password Window");
-		frame.setSize(300, 300);
+		frame.setSize(400, 400);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.setLocation(500, 100);
 		frame.setVisible(true);
@@ -36,7 +36,7 @@ public class RecoverPasswordGUI extends JFrame {
 
 		// panel one code
 		JLabel jlblWelcome = new JLabel("Recover Password");
-		jlblWelcome.setFont(new Font("Courier New", Font.ITALIC, 16));
+		jlblWelcome.setFont(new Font("Verdana", Font.ITALIC, 20));
 		panel1.add(jlblWelcome);
 
 		// panel two code
@@ -57,9 +57,7 @@ public class RecoverPasswordGUI extends JFrame {
 		JButton jbtSubmit = new JButton("Submit");
 		jbtSubmit.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae) {
-				
-				//linked to the old sign-up window
-				//CustomerUserGUI.main(new String[0]);
+			
 				
 				try {
 		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   

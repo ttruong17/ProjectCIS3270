@@ -130,10 +130,8 @@ public class UpdateFlightsGUI extends JFrame {
 		panel3.add(jbtUpdate);
 		panel3.add(jbtCancel);
 		panel3.add(done);
-		
-		
+			
 	}
-
 	
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {

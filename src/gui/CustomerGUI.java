@@ -73,9 +73,6 @@ public class CustomerGUI extends JFrame {
 		jbtSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				
-				//linked to the old sign-up window
-				//CustomerUserGUI.main(new String[0]);
-				
 				try {
 		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
 		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -85,7 +82,6 @@ public class CustomerGUI extends JFrame {
 
 		            pst = conn.prepareStatement(sql);
 
-					//pst = cn.prepareStatement(sql);
 		            String zipCode = jtfZIPcode.getText();
 		            String ssn = jtfSSN.getText();
 					pst.setString(1, jtfNameFirst.getText());
