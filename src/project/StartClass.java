@@ -8,7 +8,7 @@ public class StartClass {
 
 	@SuppressWarnings("static-access")
 	public static void main(String[] args) throws InterruptedException {
-Thread.currentThread().sleep(100);
+Thread.currentThread().sleep(100);	
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new MainMenuGUI();

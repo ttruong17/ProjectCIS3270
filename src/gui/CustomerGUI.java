@@ -69,7 +69,7 @@ public class CustomerGUI extends JFrame {
 		final JTextField jtfSSN = new JTextField();
 
 		// Create a button with text continue
-		JButton jbtSubmit = new JButton("Continue");
+		JButton jbtSubmit = new JButton("Done");
 		jbtSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				
