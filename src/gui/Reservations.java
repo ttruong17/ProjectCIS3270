@@ -4,11 +4,16 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -59,15 +64,17 @@ public class Reservations {
 				//panel 3 
 				panel3.setLayout(new BoxLayout(panel3, BoxLayout.Y_AXIS));
 
-				JLabel userName = new JLabel();
-				userName.setText("Enter your userName");
-				JTextField nameInput = new JTextField();
+				final JLabel customerID = new JLabel();
+				customerID.setText("Enter your CustomerID");
+				final JTextField nameInput = new JTextField();
+				nameInput.getText();
 				
 				JLabel flight = new JLabel();
 				flight.setText("Enter Flight ID");
-				JTextField flightInfo = new JTextField();
+				final JTextField flightInfo = new JTextField();
+				flightInfo.getText();
 				
-				panel3.add(userName);
+				panel3.add(customerID);
 				panel3.add(nameInput);
 				panel3.add(flight);
 				panel3.add(flightInfo);
@@ -76,7 +83,34 @@ public class Reservations {
 				
 				JButton submit = new JButton();
 				submit.setText("Submit");
-				
+				submit.addActionListener(new ActionListener(){
+
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						try {
+				            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+				            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+				            Connection conn = DriverManager.getConnection(url);
+							PreparedStatement pst;
+							String sql = "Insert Into Reservation (CustomerID, FlightID) VALUES(?,?)";
+
+				            pst = conn.prepareStatement(sql);
+				            int a = Integer.parseInt(nameInput.getText());
+							pst.setString(1, nameInput.getText());
+							pst.setString(2, flightInfo.getText());
+
+							
+							int n = pst.executeUpdate();
+							if (n > 0) {
+								JOptionPane.showMessageDialog(null, "Flight Reserved");
+
+							}
+						} catch (SQLException | ClassNotFoundException ae) {
+							ae.printStackTrace();
+						}
+
+					}
+				});
 				JButton cancelButton = new JButton();
 				cancelButton.setText("Cancel");
 				cancelButton.addActionListener(new ActionListener(){

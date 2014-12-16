@@ -85,44 +85,58 @@ public class CustomerCancelReservation {
 						
 						try{
 							
-							String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+							String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true";   
 							Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 							Connection conn = DriverManager.getConnection(url);
 							PreparedStatement pst;
 							
 							//search customer reservations
-							if(user.getText() != null){
-							//	String sql = "Select Flight1.FLIGHTID,Flight1.Destination,FLIGHT1.DestinationDate,FLIGHT1.DestinationHour,FLIGHT1.DestinationMin,FLIGHT1.DestinationAMPM,FLight1.Origin,FLIGHT1.OriginDate,Flight1.OriginHour,FLIGHT1.OriginMin, FLIGHT1.OriginAMPM" 
-							//				+" FROM CUSTOMER1 JOIN Reservation ON Customer1.CustomerID = Reservation.CustomerID JOIN Flight1 ON Reservation.FlightID = Flight1.FLIGHTID Where Customer1.userName=?";
-								String sql = "Select *" 
-										+" FROM CUSTOMER1 JOIN Reservation ON Customer1.CustomerID = Reservation.CustomerID JOIN Flight1 ON Reservation.FlightID = Flight1.FLIGHTID Where Customer1.customerID=?";
+							//if(user.getText() != null){
+								String sql = "Select Flight1.FLIGHTID,Flight1.Destination,FLIGHT1.DestinationDate,FLIGHT1.DestinationHour,FLIGHT1.DestinationMin,FLIGHT1.DestinationAMPM,FLight1.Origin,FLIGHT1.OriginDate,Flight1.OriginHour,FLIGHT1.OriginMin, FLIGHT1.OriginAMPM" 
+											+" FROM CUSTOMER1 FULL OUTER JOIN Reservation ON Customer1.CustomerID = Reservation.CustomerID FULL OUTER JOIN Flight1 ON Reservation.FlightID = Flight1.FlightID Where Customer1.userName=?";
+							//	String sql = "Select *" 
+							//			+" FROM CUSTOMER1 JOIN Reservation ON Customer1.CustomerID = Reservation.CustomerID JOIN Flight1 ON Reservation.FlightID = Flight1.FLIGHTID Where Customer1.customerID=?";
 
 								pst = conn.prepareStatement(sql);
 
 								pst.setString(1, user.getText());
 								ResultSet rs;
-								
 								rs = pst.executeQuery();
+
+					            while(rs.next())
+					            {
 				            	System.out.println("");
 				                System.out.print("CustomerID: "+rs.getString(1));
 				                System.out.print("FirstName : "+rs.getString(2));
-
-								/*
-								int reservationID = rs.getInt("ReservationID");
-								int userID = rs.getInt("CustomerID");
-								String userName = rs.getString("UserName");
-								final String p = "reservation" + reservationID + " UserID" + userID;
+					            
+								/*	if(rs.next()== false){
+										JOptionPane.showMessageDialog(null, "No Flights.");
+									}
+									else {
+										JOptionPane.showMessageDialog(null, rs.getString(1) + rs.getString(2)+ rs.getString(3)+ rs.getString(4)+ rs.getString(5) );
+									}*/
 								
-								JLabel result = new JLabel();
-								result.setText(p);
+								String reservationID = rs.getString(1);
+								String userID = rs.getString(2);
+								String userName = rs.getString(3);
+							 final String p = "reservation" + reservationID + " UserID" + userID;
+								
+								final JLabel result = new JLabel();
+								result.setText(p.toString());
+								//result.toString();
 								panel3.add(result);
+					            }
 								//if FALSE new user window popup else continue to Flight Screen
 								if(rs.next()== false){
 									JOptionPane.showMessageDialog(null, "No BOOKED Flights.");
-								}*/
-
+								}
+								
+					            
+							//}
+							else {
+								JOptionPane.showMessageDialog(null, "No Records !");
 							}
-							
+					            
 						}
 						catch(SQLException e){
 							e.printStackTrace();
@@ -136,7 +150,7 @@ public class CustomerCancelReservation {
 				
 				panel3.add(reservations);
 				
-				
+			//	panel3.getDefaultLocale(result);
 				
 				JLabel reservationID = new JLabel();
 				reservationID.setText("Enter Reservation ID");

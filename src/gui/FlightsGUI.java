@@ -269,12 +269,12 @@ public class FlightsGUI extends JFrame {
 		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 		            Connection conn = DriverManager.getConnection(url);
 					PreparedStatement pst;
-					String sql = "INSERT INTO Customer1 (FirstName, LastName, Street, City, ZipCode, SSN, UserName, Password, SecurityA) VALUES(?,?,?,?,?,?,?,?,?)";
+					String sql = "Update Reservation SET Customer1 (FirstName, LastName, Street, City, ZipCode, SSN, UserName, Password, SecurityA) VALUES(?,?,?,?,?,?,?,?,?)";
 
 		            pst = conn.prepareStatement(sql);
 
-					pst.setString(1, userName1.getText());
-					pst.setString(2, jtfNameLast.getText());
+					//pst.setString(1, userName.getText());
+					//pst.setString(2, jtfNameLast.getText());
 
 					
 					int n = pst.executeUpdate();
