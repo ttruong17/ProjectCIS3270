@@ -34,15 +34,16 @@ public class FlightsGUI extends JFrame {
 	JPanel panel2 = new JPanel();
 	JPanel panel3 = new JPanel();
 	JPanel panel4 = new JPanel();
+	JPanel panel5 = new JPanel();
 
 	public FlightsGUI() {
 
 		// frame properties
 		frame1.setTitle("Flight Search Menu");
-		frame1.setSize(700, 400);
+		frame1.setSize(900, 600);
 		frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame1.setVisible(true);
-		frame1.setLocation(500, 100);
+		frame1.setLocation(300, 100);
 
 		// adds the ability to have more than one panel in the main panel
 		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -53,7 +54,8 @@ public class FlightsGUI extends JFrame {
 		mainPanel.add(panel1);
 		mainPanel.add(panel2);
 		mainPanel.add(panel3);
-		mainPanel.add(panel4,BorderLayout.class);
+		mainPanel.add(panel4);
+		mainPanel.add(panel5);
 
 		// panel code - welcome message
 		JLabel jlblWelcome = new JLabel();
@@ -61,11 +63,11 @@ public class FlightsGUI extends JFrame {
 		jlblWelcome.setFont(new Font("Courier New", Font.ITALIC, 16));
 
 		// Admin only features
-
+		
 		// add the welcome Message to panel
 		panel.add(jlblWelcome);
 
-		// code for panel 1
+	// code for panel 1
 		JLabel jlblOrigin = new JLabel();
 		jlblOrigin.setText("Origin");
 
@@ -80,7 +82,7 @@ public class FlightsGUI extends JFrame {
 		panel1.add(jlblDestination);
 		panel1.add(jtfDestination);
 
-		// panel 2
+	// panel 2
 		// this panel displays the results from the database
 
 		// old panel 2 code
@@ -101,7 +103,7 @@ public class FlightsGUI extends JFrame {
 		// panel2.add(lblDate2);
 		// panel2.add(txtDate2);
 
-		/* Panel 3 */
+	/* Panel 3 */
 		// departure time
 		JLabel departureTime = new JLabel("Departure Time");
 		panel3.add(departureTime);
@@ -245,17 +247,37 @@ public class FlightsGUI extends JFrame {
 		// add the buttons to the panel
 		panel3.add(jbtSearch);
 
-		// panel4 will be exclusively left to the admin
-		// should only visible if admin logs in
+//panel 4 
+		
+		/* results will be displayed here */
+		
+		//button that takes you to the reservation window
+		
+		JButton reserve = new JButton();
+		reserve.setText("Reserve");
+		reserve.addActionListener(new ActionListener(){
+			
+			public void actionPerformed(ActionEvent e) {
+				Reservations.main(new String[0]);	
+				
+			}
+			
+		});
+		panel4.add(reserve);
+		
+		
+		
+	// panel5 will be exclusively left to the admin
+	// should only visible if admin logs in
 
 		JLabel adminMessage = new JLabel();
 		adminMessage.setText("Admin Menu");
 		
-		panel4.add(adminMessage,BorderLayout.NORTH);
+		panel5.add(adminMessage,BorderLayout.NORTH);
 		
 		JButton updateC = new JButton ();
 		updateC.setText("Update Customer");
-		panel4.add(updateC,BorderLayout.SOUTH);
+		panel5.add(updateC,BorderLayout.SOUTH);
 		updateC.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -273,7 +295,7 @@ public class FlightsGUI extends JFrame {
 		
 		JButton deleteC = new JButton ();
 		deleteC.setText("Delete Customer");
-		panel4.add(deleteC,BorderLayout.SOUTH);
+		panel5.add(deleteC,BorderLayout.SOUTH);
 		deleteC.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -291,7 +313,7 @@ public class FlightsGUI extends JFrame {
 		
 		JButton updateF = new JButton ();
 		updateF.setText("Update Flight");
-		panel4.add(updateF,BorderLayout.SOUTH);
+		panel5.add(updateF,BorderLayout.SOUTH);
 		updateF.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -309,7 +331,7 @@ public class FlightsGUI extends JFrame {
 		
 		JButton deleteF = new JButton ();
 		deleteF.setText("Delete Flight");
-		panel4.add(deleteF,BorderLayout.SOUTH);
+		panel5.add(deleteF,BorderLayout.SOUTH);
 		deleteF.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent arg0) {
@@ -328,8 +350,8 @@ public class FlightsGUI extends JFrame {
 		
 		JButton deleteCF = new JButton ();
 		deleteCF.setText("Delete Customer Booked Flight");
-		panel4.add(deleteCF,BorderLayout.SOUTH);
-		deleteF.addActionListener(new ActionListener(){
+		panel5.add(deleteCF,BorderLayout.SOUTH);
+		deleteCF.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent arg0) {
 			//code brings up the update customer window

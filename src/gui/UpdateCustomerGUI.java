@@ -50,17 +50,7 @@ public class UpdateCustomerGUI extends JFrame {
 		// customer ID
 		JLabel customerID = new JLabel();
 		customerID.setText("CustomerID");
-		final JTextField customerID1 = new JTextField();
-		
-		//Customer LastName
-		JLabel firstName = new JLabel();
-		customerID.setText("FirstName");
-		final JTextField firstName1 = new JTextField();
-		
-		//Customer LastName
-		JLabel lastName = new JLabel();
-		customerID.setText("LastName");
-		final JTextField lastName1 = new JTextField();	
+		final JTextField customerID1 = new JTextField();	
 		
 		// customer address
 		JLabel updateAddress = new JLabel();
