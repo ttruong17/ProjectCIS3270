@@ -50,7 +50,18 @@ public class UpdateCustomerGUI extends JFrame {
 		// customer ID
 		JLabel customerID = new JLabel();
 		customerID.setText("CustomerID");
-		JTextField customerID1 = new JTextField();
+		final JTextField customerID1 = new JTextField();
+		
+		//Customer LastName
+		JLabel firstName = new JLabel();
+		customerID.setText("FirstName");
+		final JTextField firstName1 = new JTextField();
+		
+		//Customer LastName
+		JLabel lastName = new JLabel();
+		customerID.setText("LastName");
+		final JTextField lastName1 = new JTextField();	
+		
 		// customer address
 		JLabel updateAddress = new JLabel();
 		updateAddress.setText("Address");
@@ -80,12 +91,12 @@ public class UpdateCustomerGUI extends JFrame {
 
 					pst = conn.prepareStatement(sql);
 
-					pst.setString(1, updateFirstName1.getText());
-					pst.setString(2, updateLastName1.getText());
-					pst.setString(3, updateAddress1.getText());
-					pst.setString(4, updateCity1.getText());
-					pst.setString(5, updateZipCode1.getText());
-					pst.setString(6, disclaimer1.getText());
+					pst.setString(1, customerID1.getText());
+					pst.setString(2, firstName1.getText());
+					pst.setString(3, lastName1.getText());
+					pst.setString(4, updateAddress1.getText());
+					pst.setString(5, updateCity1.getText());
+					pst.setString(6, updateZipCode1.getText());
 
 					int n = pst.executeUpdate();
 					if (n > 0) {

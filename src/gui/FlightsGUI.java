@@ -336,6 +336,7 @@ public class FlightsGUI extends JFrame {
 				try{
 					ChangeReservationGUI.main(new String[0]);
 					
+					
 				}
 				catch (Exception e){
 					e.printStackTrace();
