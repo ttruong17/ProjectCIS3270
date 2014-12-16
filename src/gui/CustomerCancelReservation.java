@@ -56,6 +56,13 @@ public class CustomerCancelReservation {
 				JLabel intro = new JLabel ();
 				intro.setText("Flights booked");
 				panel1.add(intro);
+
+				JLabel lbluserName = new JLabel();
+				lbluserName.setText(" Username for security purposes  ");
+				final JTextField user = new JTextField("Enter your username");
+				user.getText();
+				panel1.add(lbluserName);
+				panel1.add(user);
 				
 				/* database results */
 				//will display in panel 2
@@ -84,16 +91,25 @@ public class CustomerCancelReservation {
 							PreparedStatement pst;
 							
 							//search customer reservations
-							if(jtfOrigin.getText() != null){
-								String sql = "Select * FROM RESERVATIONS WHERE CUSTOMERID = ? ";
+							if(user.getText() != null){
+							//	String sql = "Select Flight1.FLIGHTID,Flight1.Destination,FLIGHT1.DestinationDate,FLIGHT1.DestinationHour,FLIGHT1.DestinationMin,FLIGHT1.DestinationAMPM,FLight1.Origin,FLIGHT1.OriginDate,Flight1.OriginHour,FLIGHT1.OriginMin, FLIGHT1.OriginAMPM" 
+							//				+" FROM CUSTOMER1 JOIN Reservation ON Customer1.CustomerID = Reservation.CustomerID JOIN Flight1 ON Reservation.FlightID = Flight1.FLIGHTID Where Customer1.userName=?";
+								String sql = "Select *" 
+										+" FROM CUSTOMER1 JOIN Reservation ON Customer1.CustomerID = Reservation.CustomerID JOIN Flight1 ON Reservation.FlightID = Flight1.FLIGHTID Where Customer1.customerID=?";
+
 								pst = conn.prepareStatement(sql);
 
-								pst.setString(1, jtfOrigin.getText());
+								pst.setString(1, user.getText());
 								ResultSet rs;
-								rs = pst.executeQuery();
 								
-								int reservationID = rs.getInt("Reservation_ID");
-								int userID = rs.getInt("Customer_ID");
+								rs = pst.executeQuery();
+				            	System.out.println("");
+				                System.out.print("CustomerID: "+rs.getString(1));
+				                System.out.print("FirstName : "+rs.getString(2));
+
+								/*
+								int reservationID = rs.getInt("ReservationID");
+								int userID = rs.getInt("CustomerID");
 								String userName = rs.getString("UserName");
 								final String p = "reservation" + reservationID + " UserID" + userID;
 								
@@ -103,12 +119,15 @@ public class CustomerCancelReservation {
 								//if FALSE new user window popup else continue to Flight Screen
 								if(rs.next()== false){
 									JOptionPane.showMessageDialog(null, "No BOOKED Flights.");
-								}
+								}*/
 
 							}
 							
 						}
 						catch(SQLException e){
+							e.printStackTrace();
+						} catch (ClassNotFoundException e) {
+							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						

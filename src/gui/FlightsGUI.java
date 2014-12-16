@@ -264,9 +264,29 @@ public class FlightsGUI extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				Reservations.main(new String[0]);	
-				
+				try {
+		            String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";   
+		            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		            Connection conn = DriverManager.getConnection(url);
+					PreparedStatement pst;
+					String sql = "INSERT INTO Customer1 (FirstName, LastName, Street, City, ZipCode, SSN, UserName, Password, SecurityA) VALUES(?,?,?,?,?,?,?,?,?)";
+
+		            pst = conn.prepareStatement(sql);
+
+					pst.setString(1, userName1.getText());
+					pst.setString(2, jtfNameLast.getText());
+
+					
+					int n = pst.executeUpdate();
+					if (n > 0) {
+						JOptionPane.showMessageDialog(null, "Flight Reserved");
+
+					}
+				} catch (SQLException | ClassNotFoundException ae) {
+					ae.printStackTrace();
+				}
+
 			}
-			
 		});
 		panel4.add(reserve);
 		
