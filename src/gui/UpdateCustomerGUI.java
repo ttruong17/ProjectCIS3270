@@ -67,7 +67,7 @@ public class UpdateCustomerGUI extends JFrame {
 
 
 		// create the update button
-
+		//
 		JButton update = new JButton("Update");
 		update.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

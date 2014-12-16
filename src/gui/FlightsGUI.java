@@ -168,6 +168,8 @@ public class FlightsGUI extends JFrame {
 						//}
 
 					}
+					//future implementation
+					/*
 					//Search by Destination
 					else if(jtfDestination.getText() != null){
 						String sql = "Select * FROM FLight1 WHERE Destination=?";
@@ -235,7 +237,7 @@ public class FlightsGUI extends JFrame {
 						if(rs.next()== false){
 							JOptionPane.showMessageDialog(null, "No Flights.");
 						}
-					}
+					}*/
 
 
 					
