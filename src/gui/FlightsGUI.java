@@ -288,7 +288,20 @@ public class FlightsGUI extends JFrame {
 
 			}
 		});
+		
+		JButton reservations = new JButton();
+		reservations.setText("View Reservations");
+		reservations.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				CustomerCancelReservation.main(new String[0]);
+				
+			}
+			
+		});
 		panel4.add(reserve);
+		panel4.add(reservations);
 		
 		
 		
