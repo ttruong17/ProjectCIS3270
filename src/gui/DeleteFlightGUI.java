@@ -99,8 +99,8 @@ public class DeleteFlightGUI extends JFrame {
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 					Connection conn = DriverManager.getConnection(url);
 					PreparedStatement pst;
-					String sql = "Select FligDelete From Flight1 WHERE Flight1.FlightID=?"; 
-					//String sql1 = "Delete From Reservation WHERE Reservation.FlightID=?";
+					//String sql = "Select FligDelete From Flight1 WHERE Flight1.FlightID=?"; 
+					String sql = "Delete From Flight1 WHERE Flight1.FlightID=?";
 
 					pst = conn.prepareStatement(sql);
 					pst.setString(1, flightID1.getText());

@@ -53,7 +53,7 @@ public class DeleteCustomerGUI extends JFrame {
 		JLabel customerID = new JLabel();
 		customerID.setText("CustomerID");
 		
-		JTextField customerID1 = new JTextField();
+		final JTextField customerID1 = new JTextField();
 		
 
 		JLabel userName = new JLabel();
@@ -90,9 +90,31 @@ public class DeleteCustomerGUI extends JFrame {
 		//delete customer 
 		JButton delete = new JButton("Delete");
 		delete.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent e){
-				/* code to delete customer from the customer table and all of its dependencies */
-				
+				public void actionPerformed(ActionEvent e) {
+
+					try {
+						String url = "jdbc:sqlserver://H3ATNATION\\SQLEXPRESS;databaseName=FlightSystem;integratedSecurity=true;";
+						Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+						Connection conn = DriverManager.getConnection(url);
+						PreparedStatement pst;
+						String sql = "Delete From Customer WHERE Customer.customerID=? AND Customer.userName=?"; 
+						//String sql1 = "Delete From Reservation WHERE Reservation.FlightID=?";
+
+						pst = conn.prepareStatement(sql);
+						pst.setString(1, customerID1.getText());
+						pst.setString(2, userName1.getText());
+
+						int n = pst.executeUpdate();
+						if (n > 0) {
+							JOptionPane.showMessageDialog(null,
+									"Customer Deleted Successfully.");
+
+						}
+					} catch (SQLException | ClassNotFoundException ae) {
+						ae.printStackTrace();
+					}
+
+
 			}
 		});
 		
